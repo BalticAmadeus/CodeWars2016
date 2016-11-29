@@ -1,0 +1,89 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameLogic", "GameLogic\GameLogic.csproj", "{6D4EA7B4-E783-4AFE-AF1C-6047C5A99177}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game.AdminClient", "Game.Client\Game.AdminClient.csproj", "{E6B3AA11-1ACF-4958-8E79-926CBD058113}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B150ED29-96C3-4DDA-8AB1-650663287980} = {B150ED29-96C3-4DDA-8AB1-650663287980}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game.WebService", "Game.WebService\Game.WebService.csproj", "{B150ED29-96C3-4DDA-8AB1-650663287980}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game.DebugClient", "Game.DebugClient\Game.DebugClient.csproj", "{E3A9C4CF-73AC-4E81-9711-32ABB145C3D3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B150ED29-96C3-4DDA-8AB1-650663287980} = {B150ED29-96C3-4DDA-8AB1-650663287980}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game.WebService.Model", "Game.WebService.Model\Game.WebService.Model.csproj", "{989AA0A0-291E-480A-8439-0D7E3A04599F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game.Tests", "Game.Tests\Game.Tests.csproj", "{FB62248C-E540-438F-9F5C-6FCDBFD669D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game.DemoClient", "Game.DemoClient\Game.DemoClient.csproj", "{249A9D34-272A-4773-BDD3-E5ED2B44476C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game.ClientCommon", "Game.ClientCommon\Game.ClientCommon.csproj", "{34A763DA-DA48-4ADE-A34A-B786223FA687}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game.ControlPanel", "Game.ControlPanel\Game.ControlPanel.csproj", "{AE76A0EE-C66F-48F1-BC48-5C69C8CD0959}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game.PerfMon", "Game.PerfMon\Game.PerfMon.csproj", "{79BE2EFF-04F6-4E66-AFD3-4F47AF014CCA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B150ED29-96C3-4DDA-8AB1-650663287980} = {B150ED29-96C3-4DDA-8AB1-650663287980}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6D4EA7B4-E783-4AFE-AF1C-6047C5A99177}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D4EA7B4-E783-4AFE-AF1C-6047C5A99177}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D4EA7B4-E783-4AFE-AF1C-6047C5A99177}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{6D4EA7B4-E783-4AFE-AF1C-6047C5A99177}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D4EA7B4-E783-4AFE-AF1C-6047C5A99177}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6B3AA11-1ACF-4958-8E79-926CBD058113}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6B3AA11-1ACF-4958-8E79-926CBD058113}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6B3AA11-1ACF-4958-8E79-926CBD058113}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6B3AA11-1ACF-4958-8E79-926CBD058113}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B150ED29-96C3-4DDA-8AB1-650663287980}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B150ED29-96C3-4DDA-8AB1-650663287980}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B150ED29-96C3-4DDA-8AB1-650663287980}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B150ED29-96C3-4DDA-8AB1-650663287980}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3A9C4CF-73AC-4E81-9711-32ABB145C3D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3A9C4CF-73AC-4E81-9711-32ABB145C3D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3A9C4CF-73AC-4E81-9711-32ABB145C3D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3A9C4CF-73AC-4E81-9711-32ABB145C3D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{989AA0A0-291E-480A-8439-0D7E3A04599F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{989AA0A0-291E-480A-8439-0D7E3A04599F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{989AA0A0-291E-480A-8439-0D7E3A04599F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{989AA0A0-291E-480A-8439-0D7E3A04599F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB62248C-E540-438F-9F5C-6FCDBFD669D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB62248C-E540-438F-9F5C-6FCDBFD669D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB62248C-E540-438F-9F5C-6FCDBFD669D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB62248C-E540-438F-9F5C-6FCDBFD669D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{249A9D34-272A-4773-BDD3-E5ED2B44476C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{249A9D34-272A-4773-BDD3-E5ED2B44476C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{249A9D34-272A-4773-BDD3-E5ED2B44476C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{249A9D34-272A-4773-BDD3-E5ED2B44476C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34A763DA-DA48-4ADE-A34A-B786223FA687}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34A763DA-DA48-4ADE-A34A-B786223FA687}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34A763DA-DA48-4ADE-A34A-B786223FA687}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34A763DA-DA48-4ADE-A34A-B786223FA687}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE76A0EE-C66F-48F1-BC48-5C69C8CD0959}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE76A0EE-C66F-48F1-BC48-5C69C8CD0959}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE76A0EE-C66F-48F1-BC48-5C69C8CD0959}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE76A0EE-C66F-48F1-BC48-5C69C8CD0959}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79BE2EFF-04F6-4E66-AFD3-4F47AF014CCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79BE2EFF-04F6-4E66-AFD3-4F47AF014CCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79BE2EFF-04F6-4E66-AFD3-4F47AF014CCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79BE2EFF-04F6-4E66-AFD3-4F47AF014CCA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Logging.6.0.1304.0\lib\NET45
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,86 @@
+﻿<UserControl x:Class="Game.DebugClient.Views.WaitNextTurnView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="400" d:DesignWidth="980">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="{Binding Title, FallbackValue=Title}" Margin="0,0,0,10"
+                   Style="{StaticResource H3}" />
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <Grid Margin="0,0,10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100" SharedSizeGroup="A" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="100" SharedSizeGroup="A" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Column="0" Grid.Row="0" Target="{Binding ElementName=ServiceUrl}" Content="Se_rvice Url:"
+                       Margin="0,0,0,10" HorizontalAlignment="Right" />
+                <TextBox Grid.Column="1" Grid.Row="0" x:Name="ServiceUrl" Text="{Binding ServiceUrl}" Margin="0,0,0,10" />
+
+                <Label Grid.Column="0" Grid.Row="1" Target="{Binding ElementName=TeamName}" Content="_Team Name:"
+                       Margin="0,0,0,10" HorizontalAlignment="Right" />
+                <TextBox Grid.Column="1" Grid.Row="1" x:Name="TeamName" Text="{Binding TeamName}" Margin="0,0,0,10" />
+                <Label Grid.Column="0" Grid.Row="2" Target="{Binding ElementName=Username}" Content="_Username:"
+                       Margin="0,0,0,10" HorizontalAlignment="Right" />
+                <TextBox Grid.Column="1" Grid.Row="2" x:Name="Username" Text="{Binding Username}" Margin="0,0,0,10" />
+                <Label Grid.Column="0" Grid.Row="3" Target="{Binding ElementName=Password}" Content="_Password:"
+                       Margin="0,0,0,10" HorizontalAlignment="Right" />
+                <TextBox Grid.Column="1" Grid.Row="3" x:Name="Password" Text="{Binding Password}" Margin="0,0,0,10" />
+                <Label Grid.Column="0" Grid.Row="4" Target="{Binding ElementName=SessionId}" Content="_Session Id:"
+                       Margin="0,0,0,10" HorizontalAlignment="Right" />
+                <TextBox Grid.Column="1" Grid.Row="4" x:Name="SessionId" Text="{Binding SessionId}" Margin="0,0,0,10" />
+                <Label Grid.Column="0" Grid.Row="5" Target="{Binding ElementName=SequenceNumber}"
+                       Content="_Seq. Number:" Margin="0,0,0,10" HorizontalAlignment="Right" />
+                <TextBox Grid.Column="1" Grid.Row="5" x:Name="SequenceNumber" Text="{Binding SequenceNumber}"
+                         Margin="0,0,0,10" />
+                <Label Grid.Column="0" Grid.Row="6" Target="{Binding ElementName=AuthCode}" Content="_Auth Code:"
+                       Margin="0,0,0,10" HorizontalAlignment="Right" />
+                <TextBox Grid.Column="1" Grid.Row="6" x:Name="AuthCode" Text="{Binding AuthCode}" Margin="0,0,0,10" />
+
+                <Label Grid.Column="2" Grid.Row="0" Target="{Binding ElementName=AuthCodeString}"
+                       Content="_Auth String:" Margin="0,0,0,10" HorizontalAlignment="Right" />
+                <TextBox Grid.Column="3" Grid.Row="0" Grid.RowSpan="2" x:Name="AuthCodeString"
+                         Text="{Binding AuthCodeString}" Margin="0,0,0,10" TextWrapping="Wrap"
+                         VerticalContentAlignment="Top" />
+                <Label Grid.Column="2" Grid.Row="2" Target="{Binding ElementName=PlayerId}" Content="_Player Id:"
+                       Margin="0,0,0,10" HorizontalAlignment="Right" />
+                <TextBox Grid.Column="3" Grid.Row="2" x:Name="PlayerId" Text="{Binding PlayerId}" Margin="0,0,0,10" />
+                <Label Grid.Column="2" Grid.Row="3" Target="{Binding ElementName=Turn}" Content="_Turn:"
+                       Margin="0,0,0,10" HorizontalAlignment="Right" />
+                <TextBox Grid.Column="3" Grid.Row="3" x:Name="Turn" Text="{Binding Turn}" Margin="0,0,0,10" />
+            </Grid>
+        </ScrollViewer>
+
+        <Grid Grid.Row="2" HorizontalAlignment="Right" Margin="0,10,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0" Content="_Execute" Command="{Binding ExecuteCommand}" Margin="0,0,10,0" Height="60"
+                    FontWeight="Bold" />
+        </Grid>
+    </Grid>
+</UserControl>

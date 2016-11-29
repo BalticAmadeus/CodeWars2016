@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="AdminService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:60044/AdminService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:60044/AdminService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:60044/AdminService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Game.WebService.Model" />
+      <xsd:import schemaLocation="http://localhost:60044/AdminService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:60044/AdminService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/GameLogic.UserManagement" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IAdminService_InitLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:InitLogin" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_InitLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InitLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_CompleteLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:CompleteLogin" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_CompleteLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CompleteLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_ListGames_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListGames" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_ListGames_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListGamesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_CreateGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateGame" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_CreateGame_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateGameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetGameDetails_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGameDetails" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetGameDetails_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGameDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_ListPlayers_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListPlayers" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_ListPlayers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListPlayersResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_AddGamePlayer_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddGamePlayer" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_AddGamePlayer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddGamePlayerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_RemoveGamePlayer_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveGamePlayer" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_RemoveGamePlayer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveGamePlayerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_SetGameMap_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetGameMap" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_SetGameMap_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetGameMapResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_StartGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:StartGame" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_StartGame_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StartGameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_PauseGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:PauseGame" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_PauseGame_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PauseGameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_ResumeGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:ResumeGame" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_ResumeGame_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ResumeGameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_CreateObserver_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateObserver" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_CreateObserver_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateObserverResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_StartObserving_InputMessage">
+    <wsdl:part name="parameters" element="tns:StartObserving" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_StartObserving_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StartObservingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_ObserveNextTurn_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObserveNextTurn" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_ObserveNextTurn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObserveNextTurnResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_DropPlayer_InputMessage">
+    <wsdl:part name="parameters" element="tns:DropPlayer" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_DropPlayer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DropPlayerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_DeleteGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteGame" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_DeleteGame_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteGameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetLiveInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLiveInfo" />
+  </wsdl:message>
+  <wsdl:message name="IAdminService_GetLiveInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLiveInfoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IAdminService">
+    <wsdl:operation name="InitLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminService/InitLogin" message="tns:IAdminService_InitLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminService/InitLoginResponse" message="tns:IAdminService_InitLogin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CompleteLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminService/CompleteLogin" message="tns:IAdminService_CompleteLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminService/CompleteLoginResponse" message="tns:IAdminService_CompleteLogin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListGames">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminService/ListGames" message="tns:IAdminService_ListGames_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminService/ListGamesResponse" message="tns:IAdminService_ListGames_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminService/CreateGame" message="tns:IAdminService_CreateGame_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminService/CreateGameResponse" message="tns:IAdminService_CreateGame_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGameDetails">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminService/GetGameDetails" message="tns:IAdminService_GetGameDetails_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminService/GetGameDetailsResponse" message="tns:IAdminService_GetGameDetails_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListPlayers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminService/ListPlayers" message="tns:IAdminService_ListPlayers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminService/ListPlayersResponse" message="tns:IAdminService_ListPlayers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddGamePlayer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminService/AddGamePlayer" message="tns:IAdminService_AddGamePlayer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminService/AddGamePlayerResponse" message="tns:IAdminService_AddGamePlayer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveGamePlayer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminService/RemoveGamePlayer" message="tns:IAdminService_RemoveGamePlayer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminService/RemoveGamePlayerResponse" message="tns:IAdminService_RemoveGamePlayer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetGameMap">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminService/SetGameMap" message="tns:IAdminService_SetGameMap_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminService/SetGameMapResponse" message="tns:IAdminService_SetGameMap_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StartGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminService/StartGame" message="tns:IAdminService_StartGame_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminService/StartGameResponse" message="tns:IAdminService_StartGame_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PauseGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminService/PauseGame" message="tns:IAdminService_PauseGame_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminService/PauseGameResponse" message="tns:IAdminService_PauseGame_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResumeGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminService/ResumeGame" message="tns:IAdminService_ResumeGame_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminService/ResumeGameResponse" message="tns:IAdminService_ResumeGame_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateObserver">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminService/CreateObserver" message="tns:IAdminService_CreateObserver_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminService/CreateObserverResponse" message="tns:IAdminService_CreateObserver_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StartObserving">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminService/StartObserving" message="tns:IAdminService_StartObserving_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminService/StartObservingResponse" message="tns:IAdminService_StartObserving_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObserveNextTurn">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminService/ObserveNextTurn" message="tns:IAdminService_ObserveNextTurn_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminService/ObserveNextTurnResponse" message="tns:IAdminService_ObserveNextTurn_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DropPlayer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminService/DropPlayer" message="tns:IAdminService_DropPlayer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminService/DropPlayerResponse" message="tns:IAdminService_DropPlayer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminService/DeleteGame" message="tns:IAdminService_DeleteGame_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminService/DeleteGameResponse" message="tns:IAdminService_DeleteGame_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLiveInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAdminService/GetLiveInfo" message="tns:IAdminService_GetLiveInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAdminService/GetLiveInfoResponse" message="tns:IAdminService_GetLiveInfo_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IAdminService" type="tns:IAdminService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InitLogin">
+      <soap:operation soapAction="http://tempuri.org/IAdminService/InitLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CompleteLogin">
+      <soap:operation soapAction="http://tempuri.org/IAdminService/CompleteLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListGames">
+      <soap:operation soapAction="http://tempuri.org/IAdminService/ListGames" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateGame">
+      <soap:operation soapAction="http://tempuri.org/IAdminService/CreateGame" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGameDetails">
+      <soap:operation soapAction="http://tempuri.org/IAdminService/GetGameDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListPlayers">
+      <soap:operation soapAction="http://tempuri.org/IAdminService/ListPlayers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddGamePlayer">
+      <soap:operation soapAction="http://tempuri.org/IAdminService/AddGamePlayer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveGamePlayer">
+      <soap:operation soapAction="http://tempuri.org/IAdminService/RemoveGamePlayer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetGameMap">
+      <soap:operation soapAction="http://tempuri.org/IAdminService/SetGameMap" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartGame">
+      <soap:operation soapAction="http://tempuri.org/IAdminService/StartGame" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PauseGame">
+      <soap:operation soapAction="http://tempuri.org/IAdminService/PauseGame" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResumeGame">
+      <soap:operation soapAction="http://tempuri.org/IAdminService/ResumeGame" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateObserver">
+      <soap:operation soapAction="http://tempuri.org/IAdminService/CreateObserver" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartObserving">
+      <soap:operation soapAction="http://tempuri.org/IAdminService/StartObserving" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObserveNextTurn">
+      <soap:operation soapAction="http://tempuri.org/IAdminService/ObserveNextTurn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DropPlayer">
+      <soap:operation soapAction="http://tempuri.org/IAdminService/DropPlayer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGame">
+      <soap:operation soapAction="http://tempuri.org/IAdminService/DeleteGame" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLiveInfo">
+      <soap:operation soapAction="http://tempuri.org/IAdminService/GetLiveInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AdminService">
+    <wsdl:port name="BasicHttpBinding_IAdminService" binding="tns:BasicHttpBinding_IAdminService">
+      <soap:address location="http://localhost:60044/AdminService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

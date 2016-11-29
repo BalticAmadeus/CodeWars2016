@@ -1,0 +1,9 @@
+﻿<Window x:Class="Game.AdminClient.ShellWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:regions="http://prismlibrary.com/"
+        Title="Game Admin Client" MinHeight="700" MinWidth="1280" Width="1280" Height="700" Icon="Assets/Icon.ico">
+    <Grid>
+        <ContentControl regions:RegionManager.RegionName="MainRegion" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0"/>
+    </Grid>
+</Window>

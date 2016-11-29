@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="Game.DebugClient.Views.CommonDataView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="400" d:DesignWidth="300">
+    <Expander ExpandDirection="Right" IsExpanded="True" ToolTip="Common Data">
+        <Expander.Content>
+    <Grid MinWidth="300" MaxWidth="300">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text=" Common Data" Margin="0,0,0,10" />
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <Grid Margin="0,0,10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="Service Url:" Target="{Binding ElementName=ServiceUrl}"
+                       HorizontalAlignment="Right" Margin="0,0,5,5" />
+                <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" x:Name="ServiceUrl"
+                         Text="{Binding ServiceUrl}" Margin="0,0,0,5" />
+
+                <Label Grid.Row="1" Grid.Column="0" Content="Team Name:" Target="{Binding ElementName=TeamName}"
+                       HorizontalAlignment="Right" Margin="0,0,5,5" />
+                <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" x:Name="TeamName" Text="{Binding TeamName}"
+                         Margin="0,0,0,5" />
+
+                <Label Grid.Row="2" Grid.Column="0" Content="Username:" Target="{Binding ElementName=Username}"
+                       HorizontalAlignment="Right" Margin="0,0,5,5" />
+                <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" x:Name="Username" Text="{Binding Username}"
+                         Margin="0,0,0,5" />
+
+                <Label Grid.Row="3" Grid.Column="0" Content="Password:" Target="{Binding ElementName=Password}"
+                       HorizontalAlignment="Right" Margin="0,0,5,5" />
+                <TextBox Grid.Row="3" Grid.Column="1" Text="" Margin="0,0,0,5" IsEnabled="False" />
+                <TextBox Grid.Row="3" Grid.Column="1" x:Name="Password" Text="{Binding Password}" Margin="0,0,0,5"
+                         Visibility="{Binding IsChecked, ElementName=PasswordCheckBox, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                <CheckBox Grid.Row="3" Grid.Column="2" x:Name="PasswordCheckBox" IsChecked="False"
+                          VerticalAlignment="Center" Margin="5,0,0,5" />
+
+                <Label Grid.Row="4" Grid.Column="0" Content="Session Id:" Target="{Binding ElementName=SessionId}"
+                       HorizontalAlignment="Right" Margin="0,0,5,5" />
+                <TextBox Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" x:Name="SessionId" Text="{Binding SessionId}"
+                         Margin="0,0,0,5" />
+
+                <Label Grid.Row="5" Grid.Column="0" Content="Seq. Number:"
+                       Target="{Binding ElementName=SequenceNumber}" HorizontalAlignment="Right" Margin="0,0,5,5" />
+                <TextBox Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" x:Name="SequenceNumber"
+                         Text="{Binding SequenceNumber}" Margin="0,0,0,5" />
+
+                <Label Grid.Row="6" Grid.Column="0" Content="PlayerId:" Target="{Binding ElementName=PlayerId}"
+                       HorizontalAlignment="Right" Margin="0,0,5,5" />
+                <TextBox Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" x:Name="PlayerId" Text="{Binding PlayerId}"
+                         Margin="0,0,0,5" />
+            </Grid>
+
+        </ScrollViewer>
+    </Grid>
+        </Expander.Content>
+    </Expander>
+</UserControl>

@@ -1,0 +1,1900 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controls="clr-namespace:Game.AdminClient.Controls"
+                    xmlns:converters="clr-namespace:Game.AdminClient.Converters">
+
+    <FontFamily x:Key="OpenSans">/Fonts/#Open Sans</FontFamily>
+    <FontFamily x:Key="SegoeSymbol">Segoe UI Symbol</FontFamily>
+
+    <!--<ImageBrush x:Key="BaBackgroundBrush" ImageSource="Assets\background.png" Stretch="UniformToFill" />-->
+    <SolidColorBrush x:Key="BaBackgroundBrush" Color="#63acb3" Opacity="1"></SolidColorBrush>
+
+    <Color x:Key="TextBlockDefaultForegroundColor" >#FF333333</Color>
+    <SolidColorBrush x:Key="TextBlockDefaultForegroundBrush" Color="{StaticResource TextBlockDefaultForegroundColor}" />
+
+    <Style x:Key="{x:Type TextBlock}" TargetType="TextBlock">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="FontFamily" Value="{StaticResource SegoeSymbol}" />
+        <Setter Property="Foreground" Value="{StaticResource TextBlockDefaultForegroundBrush}" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontWeight" Value="Regular" />
+        <Setter Property="TextAlignment" Value="Left" />
+        <Setter Property="TextWrapping" Value="NoWrap" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+    </Style>
+
+    <Style x:Key="NormalText" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}" />
+
+    <Style x:Key="BoldText" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Setter Property="FontWeight" Value="SemiBold" />
+    </Style>
+
+    <Style x:Key="H1" TargetType="TextBlock" BasedOn="{StaticResource {x:Type TextBlock}}">
+        <Setter Property="FontSize" Value="36" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="Margin" Value="0,0,0,16" />
+    </Style>
+
+    <Style x:Key="H2" TargetType="TextBlock" BasedOn="{StaticResource H1}">
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="Margin" Value="0,0,0,10" />
+    </Style>
+
+    <Style x:Key="H3" TargetType="TextBlock" BasedOn="{StaticResource H2}">
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="Margin" Value="0,0,0,6" />
+    </Style>
+
+    <Color x:Key="ButtonDefaultBorderColor" >#FFADADAD</Color>
+    <Color x:Key="ButtonDefaultForegroundColor" >#FF333333</Color>
+    <Color x:Key="ButtonDefaultBackgroundColor" >#FFFFFFFF</Color>
+    <Color x:Key="ButtonDefaultDisabledBackgroundColor" >#315659</Color>
+    <Color x:Key="ButtonDefaultMouseOverBackgroundColor" >#FFEBEBEB</Color>
+    <Color x:Key="ButtonDefaultPressedBackgroundColor" >#FFCBCBCB</Color>
+
+    <SolidColorBrush x:Key="ButtonDefaultForegroundBrush" Color="{StaticResource ButtonDefaultForegroundColor}" />
+    <SolidColorBrush x:Key="ButtonDefaultBackgroundBrush" Color="{StaticResource ButtonDefaultBackgroundColor}" />
+    <SolidColorBrush x:Key="ButtonDefaultBorderBrush" Color="{StaticResource ButtonDefaultBorderColor}" />
+
+    <Style TargetType="Button">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Padding" Value="10,6,10,6" />
+        <Setter Property="Background" Value="{StaticResource BaBackgroundBrush}" />
+        <Setter Property="Foreground" Value="white" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{StaticResource ButtonDefaultBorderBrush}" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="{StaticResource SegoeSymbol}"/>
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontWeight" Value="Regular" />
+        <Setter Property="Height" Value="30" />
+        <Setter Property="MinWidth" Value="100" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="15" 
+                            BorderThickness="0"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            Background="{TemplateBinding Background}"
+                            TextBlock.Foreground="{TemplateBinding Foreground}" >
+
+                        <ContentPresenter Margin="{TemplateBinding Padding}" RecognizesAccessKey="True"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition GeneratedDuration="0" />
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="Normal" />
+                                <!--<VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" >
+                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource ButtonDefaultMouseOverBackgroundColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>-->
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" >
+                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource ButtonDefaultPressedBackgroundColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" >
+                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource ButtonDefaultDisabledBackgroundColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Color x:Key="TextBoxDefaultBorderColor" >#FFADADAD</Color>
+    <Color x:Key="TextBoxDefaultInvalidBorderColor" >#FFFF3333</Color>
+    <Color x:Key="TextBoxDefaultForegroundColor" >#FF333333</Color>
+    <Color x:Key="TextBoxDefaultBackgroundColor" >#FFFFFFFF</Color>
+    <Color x:Key="TextBoxDefaultDisabledBackgroundColor" >#FFEBEBEB</Color>
+    <Color x:Key="TextBoxDefaultMouseOverBorderColor" >#FFEBEBEB</Color>
+    <Color x:Key="TextBoxDefaultPressedBorderColor" >#FFCBCBCB</Color>
+    <Color x:Key="TextBoxDefaultReadOnlyBorderColor" >#FFCBCBCB</Color>
+
+    <SolidColorBrush x:Key="TextBoxDefaultForegroundBrush" Color="{StaticResource TextBoxDefaultForegroundColor}" />
+    <SolidColorBrush x:Key="TextBoxDefaultBackgroundBrush" Color="{StaticResource TextBoxDefaultBackgroundColor}" />
+    <SolidColorBrush x:Key="TextBoxDefaultBorderBrush" Color="{StaticResource TextBoxDefaultBorderColor}" />
+    <SolidColorBrush x:Key="TextBoxDefaultInvalidBorderBrush" Color="{StaticResource TextBoxDefaultInvalidBorderColor}" />
+
+    <Style x:Key="{x:Type TextBox}" TargetType="{x:Type TextBox}">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Padding" Value="4,3,4,3" />
+        <Setter Property="Background" Value="white" />
+        <Setter Property="Foreground" Value="{StaticResource TextBoxDefaultForegroundBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{StaticResource TextBoxDefaultBorderBrush}" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="{StaticResource OpenSans}"/>
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontWeight" Value="Regular" />
+        <Setter Property="MinHeight" Value="30" />
+        <Setter Property="Height" Value="30" />
+        <Setter Property="AllowDrop" Value="True" />
+        <Setter Property="MaxLines" Value="1" />
+        <Setter Property="TextAlignment" Value="Left" />
+        <Setter Property="Validation.ErrorTemplate" Value="{x:Null}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border Name="Border"
+                            CornerRadius="0"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}"
+                            >
+                        <Border.BorderBrush>
+                            <SolidColorBrush Color="#bfbfbf"></SolidColorBrush>
+                        </Border.BorderBrush>
+                        <ScrollViewer x:Name="PART_ContentHost"
+                                        Margin="{TemplateBinding Padding}"
+                                        HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Stretch"
+                                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition GeneratedDuration="0" />
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="Normal" />
+                                <!--<VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames
+                                                Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                                                     Value="{StaticResource TextBoxDefaultMouseOverBorderColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>-->
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames
+                                                Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                                                     Value="{StaticResource TextBoxDefaultDisabledBackgroundColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="ReadOnly">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames
+                                                Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0"
+                                                                     Value="{StaticResource TextBoxDefaultReadOnlyBorderColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Validation.HasError" Value="True">
+                            <Setter Property="BorderBrush" Value="{StaticResource TextBoxDefaultInvalidBorderBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Color x:Key="PasswordBoxDefaultBorderColor" >#FFADADAD</Color>
+    <Color x:Key="PasswordBoxDefaultForegroundColor" >#FF333333</Color>
+    <Color x:Key="PasswordBoxDefaultBackgroundColor" >#FFFFFFFF</Color>
+    <Color x:Key="PasswordBoxDefaultDisabledBackgroundColor" >#FFEBEBEB</Color>
+    <Color x:Key="PasswordBoxDefaultMouseOverBorderColor" >#FFEBEBEB</Color>
+    <Color x:Key="PasswordBoxDefaultPressedBorderColor" >#FFCBCBCB</Color>
+    <Color x:Key="PasswordBoxDefaultReadOnlyBorderColor" >#FFCBCBCB</Color>
+
+    <SolidColorBrush x:Key="PasswordBoxDefaultForegroundBrush" Color="{StaticResource PasswordBoxDefaultForegroundColor}" />
+    <SolidColorBrush x:Key="PasswordBoxDefaultBackgroundBrush" Color="{StaticResource PasswordBoxDefaultBackgroundColor}" />
+    <SolidColorBrush x:Key="PasswordBoxDefaultBorderBrush" Color="{StaticResource PasswordBoxDefaultBorderColor}" />
+
+    <Style x:Key="{x:Type PasswordBox}" TargetType="{x:Type PasswordBox}">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Padding" Value="4,3,4,3" />
+        <Setter Property="Background" Value="white" />
+        <Setter Property="Foreground" Value="{StaticResource PasswordBoxDefaultForegroundBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{StaticResource PasswordBoxDefaultBorderBrush}" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="{StaticResource SegoeSymbol}"/>
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontWeight" Value="Regular" />
+        <Setter Property="Height" Value="30" />
+        <Setter Property="AllowDrop" Value="True" />
+        <Setter Property="PasswordChar" Value="&#x26AB;" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type PasswordBox}">
+                    <Border Name="Border" 
+                            CornerRadius="0" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            Background="{TemplateBinding Background}"
+                            >
+
+                        <Border.BorderBrush>
+                            <SolidColorBrush Color="#bfbfbf"></SolidColorBrush>
+                        </Border.BorderBrush>
+
+                        <ScrollViewer x:Name="PART_ContentHost" 
+                                      Margin="{TemplateBinding Padding}" 
+                                      HorizontalAlignment="Stretch" 
+                                      VerticalAlignment="Stretch" 
+                                      HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                      VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition GeneratedDuration="0" />
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="Normal" />
+                                <!--<VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" >
+                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource PasswordBoxDefaultMouseOverBorderColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>-->
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" >
+                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource PasswordBoxDefaultDisabledBackgroundColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="ReadOnly" >
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" >
+                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource PasswordBoxDefaultReadOnlyBorderColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Color x:Key="DatePickerTextBoxDefaultBorderColor" >#FFADADAD</Color>
+    <Color x:Key="DatePickerTextBoxDefaultForegroundColor" >#FF333333</Color>
+    <Color x:Key="DatePickerTextBoxDefaultBackgroundColor" >#FFFFFFFF</Color>
+    <Color x:Key="DatePickerTextBoxDefaultDisabledBackgroundColor" >#FFEBEBEB</Color>
+    <Color x:Key="DatePickerTextBoxDefaultMouseOverBorderColor" >#FFEBEBEB</Color>
+    <Color x:Key="DatePickerTextBoxDefaultPressedBorderColor" >#FFCBCBCB</Color>
+    <Color x:Key="DatePickerTextBoxDefaultReadOnlyBorderColor" >#FFCBCBCB</Color>
+
+    <SolidColorBrush x:Key="DatePickerTextBoxDefaultForegroundBrush" Color="{StaticResource DatePickerTextBoxDefaultForegroundColor}" />
+    <SolidColorBrush x:Key="DatePickerTextBoxDefaultBackgroundBrush" Color="{StaticResource DatePickerTextBoxDefaultBackgroundColor}" />
+    <SolidColorBrush x:Key="DatePickerTextBoxDefaultBorderBrush" Color="{StaticResource DatePickerTextBoxDefaultBorderColor}" />
+
+    <Style x:Key="{x:Type DatePickerTextBox}" TargetType="{x:Type DatePickerTextBox}">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Padding" Value="4,3,4,3" />
+        <Setter Property="Background" Value="{StaticResource DatePickerTextBoxDefaultBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource DatePickerTextBoxDefaultForegroundBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{StaticResource DatePickerTextBoxDefaultBorderBrush}" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="{StaticResource OpenSans}"/>
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontWeight" Value="Regular" />
+        <Setter Property="Height" Value="34" />
+        <Setter Property="AllowDrop" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type DatePickerTextBox}">
+                    <Border Name="Border" 
+                            CornerRadius="2" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}" >
+
+                        <Grid>
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                          Margin="{TemplateBinding Padding}"
+                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+
+                            <Border Margin="6,0,0,0">
+                                <ContentControl x:Name="PART_Watermark"
+                                            VerticalAlignment="Center"
+                                            Opacity="0"
+                                            Margin="{TemplateBinding Padding}"
+                                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            </Border>
+                        </Grid>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualStateGroup.Transitions>
+                                    <VisualTransition GeneratedDuration="0" />
+                                </VisualStateGroup.Transitions>
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" >
+                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource DatePickerTextBoxDefaultMouseOverBorderColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)" >
+                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource DatePickerTextBoxDefaultDisabledBackgroundColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="ReadOnly" >
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)" >
+                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource DatePickerTextBoxDefaultReadOnlyBorderColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="WatermarkStates">
+                                <VisualState x:Name="Unwatermarked" />
+                                <VisualState x:Name="Watermarked" >
+                                    <Storyboard>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="PART_Watermark"  Storyboard.TargetProperty="(ContentControl.Opacity)" >
+                                            <EasingDoubleKeyFrame KeyTime="0" Value="1" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Color x:Key="LabelDefaultBorderColor" >#00FFFFFF</Color>
+    <Color x:Key="LabelDefaultForegroundColor" >#FF333333</Color>
+    <Color x:Key="LabelDefaultBackgroundColor" >#00FFFFFF</Color>
+
+    <SolidColorBrush x:Key="LabelDefaultForegroundBrush" Color="{StaticResource LabelDefaultForegroundColor}" />
+    <SolidColorBrush x:Key="LabelDefaultBackgroundBrush" Color="{StaticResource LabelDefaultBackgroundColor}" />
+    <SolidColorBrush x:Key="LabelDefaultBorderBrush" Color="{StaticResource LabelDefaultBorderColor}" />
+
+    <Style x:Key="LabelDefault" TargetType="{x:Type Label}">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <!--<Setter Property="Padding" Value="10,6,10,6" />-->
+        <Setter Property="Margin" Value="0,8,0,5" />
+        <Setter Property="Background" Value="{StaticResource LabelDefaultBackgroundBrush}" />
+        <Setter Property="Foreground" Value="#4f4f4f" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderBrush" Value="{StaticResource LabelDefaultBorderBrush}" />
+        <Setter Property="HorizontalContentAlignment" Value="Right" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="{StaticResource SegoeSymbol}"/>
+        <Setter Property="FontSize" Value="14" />
+        <!--<Setter Property="FontWeight" Value="SemiBold" />-->
+        <!--<Setter Property="Height" Value="34" />-->
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Label">
+                    <Border Name="Border" 
+                            CornerRadius="0" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}">
+
+                        <ContentPresenter Margin="{TemplateBinding Padding}" 
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          RecognizesAccessKey="True" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="{x:Type Label}" TargetType="{x:Type Label}" BasedOn="{StaticResource LabelDefault}"></Style>
+    <Style TargetType="Label" x:Key="LabelWhite" >
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+
+    <Color x:Key="ComboBoxItemDefaultBorderColor" >#FFADADAD</Color>
+    <Color x:Key="ComboBoxItemDefaultForegroundColor" >#FF333333</Color>
+    <Color x:Key="ComboBoxItemDefaultBackgroundColor" >#FFFFFFFF</Color>
+    <Color x:Key="ComboBoxItemDefaultMouseOverBackgroundColor" >#FFEBEBEB</Color>
+
+    <SolidColorBrush x:Key="ComboBoxItemDefaultForegroundBrush" Color="{StaticResource ComboBoxItemDefaultForegroundColor}" />
+    <SolidColorBrush x:Key="ComboBoxItemDefaultBackgroundBrush" Color="{StaticResource ComboBoxItemDefaultBackgroundColor}" />
+    <SolidColorBrush x:Key="ComboBoxItemDefaultBorderBrush" Color="{StaticResource ComboBoxItemDefaultBorderColor}" />
+
+    <Style TargetType="ComboBoxItem">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Padding" Value="10,6,10,6" />
+        <Setter Property="Background" Value="{StaticResource ComboBoxItemDefaultBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource ComboBoxItemDefaultForegroundBrush}" />
+        <Setter Property="BorderThickness" Value="0,0,0,1" />
+        <Setter Property="BorderBrush" Value="{StaticResource ComboBoxItemDefaultBorderBrush}" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="{StaticResource OpenSans}"/>
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontWeight" Value="Regular" />
+        <Setter Property="Height" Value="34" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ComboBoxItem}">
+                    <Border Margin="1,0,1,0"
+                            Background="{TemplateBinding Background}" 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}">
+
+                        <ContentPresenter Margin="{TemplateBinding Padding}" 
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal"/>
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource ComboBoxItemDefaultMouseOverBackgroundColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Color x:Key="ComboBoxDefaultBorderColor" >#FFADADAD</Color>
+    <Color x:Key="ComboBoxDefaultForegroundColor" >#FF333333</Color>
+    <Color x:Key="ComboBoxDefaultBackgroundColor" >#FFFFFFFF</Color>
+    <Color x:Key="ComboBoxDefaultMouseOverBackgroundColor" >#FFEBEBEB</Color>
+    <Color x:Key="ComboBoxDefaultDisabledBackgroundColor" >#FFEBEBEB</Color>
+
+    <SolidColorBrush x:Key="ComboBoxDefaultForegroundBrush" Color="{StaticResource ComboBoxDefaultForegroundColor}" />
+    <SolidColorBrush x:Key="ComboBoxDefaultBackgroundBrush" Color="{StaticResource ComboBoxDefaultBackgroundColor}" />
+    <SolidColorBrush x:Key="ComboBoxDefaultBorderBrush" Color="{StaticResource ComboBoxDefaultBorderColor}" />
+
+    <Style TargetType="ComboBox">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Padding" Value="10,6,10,6" />
+        <Setter Property="Background" Value="{StaticResource ComboBoxItemDefaultBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource ComboBoxItemDefaultForegroundBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{StaticResource ComboBoxItemDefaultBorderBrush}" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="{StaticResource OpenSans}"/>
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontWeight" Value="Regular" />
+        <Setter Property="Height" Value="34" />
+
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ComboBox}">
+                    <Border x:Name="InnerBorder" 
+                            CornerRadius="2" 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            Background="{TemplateBinding Background}">
+                        <Grid>
+                            <ToggleButton x:Name="ToggleButton" 
+                                          Focusable="False" 
+                                          ClickMode="Press"
+                                          Foreground="{TemplateBinding Foreground}"
+                                          IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}">
+                                <ToggleButton.Template>
+                                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="28" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <Border Grid.ColumnSpan="2" 
+                                                    CornerRadius="2" 
+                                                    BorderThickness="0" 
+                                                    BorderBrush="Transparent" 
+                                                    Background="Transparent" 
+                                                    Margin="1, 1, 1, 1" />
+                                            <Path Grid.Column="1" 
+                                                  HorizontalAlignment="Center" 
+                                                  VerticalAlignment="Center" 
+                                                  Data="M 0 0 L 4 4 L 8 0 Z" 
+                                                  Fill="{TemplateBinding Foreground}"/>
+                                        </Grid>
+                                    </ControlTemplate>
+                                </ToggleButton.Template>
+                            </ToggleButton>
+                            <ContentPresenter x:Name="ContentSite" 
+                                              IsHitTestVisible="False" 
+                                              Content="{TemplateBinding SelectionBoxItem}" 
+                                              ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" 
+                                              ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" 
+                                              Margin="{TemplateBinding Padding}" 
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+
+                            <Border Margin="0,0,14,0">
+                                <TextBox x:Name="PART_EditableTextBox" 
+                                     Focusable="True" 
+                                     Visibility="Hidden"
+                                     BorderBrush="Transparent"
+                                     Background="Transparent" 
+                                     HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                     VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                     Margin="{TemplateBinding Padding}" 
+                                     IsReadOnly="{TemplateBinding IsReadOnly}" />
+                            </Border>
+
+                            <Popup x:Name="Popup" 
+                                   Placement="Bottom" 
+                                   IsOpen="{TemplateBinding IsDropDownOpen}" 
+                                   AllowsTransparency="True" 
+                                   Focusable="False" 
+                                   PopupAnimation="Slide" 
+                                   HorizontalOffset="-1" 
+                                   VerticalOffset="8">
+                                <Grid x:Name="DropDown"
+                                      MinWidth="{TemplateBinding ActualWidth}" 
+                                      MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                    <Border x:Name="DropDownBorder" 
+                                            CornerRadius="2" 
+                                            BorderThickness="{TemplateBinding BorderThickness}" 
+                                            BorderBrush="{TemplateBinding BorderBrush}" 
+                                            Background="{TemplateBinding Background}" />
+
+                                    <ScrollViewer Margin="0,1,0,0" SnapsToDevicePixels="True">
+                                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained" />
+                                    </ScrollViewer>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver" >
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource ComboBoxDefaultMouseOverBackgroundColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource ComboBoxDefaultDisabledBackgroundColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="EditStates">
+                                <VisualState x:Name="Editable">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="PART_EditableTextBox">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="ContentSite">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Uneditable" />
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="HasItems" Value="False">
+                            <Setter TargetName="DropDownBorder" Property="MinHeight" Value="95" />
+                        </Trigger>
+                        <Trigger Property="IsGrouping" Value="True">
+                            <Setter Property="ScrollViewer.CanContentScroll" Value="False" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Color x:Key="CheckBoxDefaultBorderColor" >#FFADADAD</Color>
+    <Color x:Key="CheckBoxDefaultForegroundColor" >#FF333333</Color>
+    <Color x:Key="CheckBoxDefaultBackgroundColor" >#FFFFFFFF</Color>
+    <Color x:Key="CheckBoxDefaultMouseOverBackgroundColor" >#FFEBEBEB</Color>
+    <Color x:Key="CheckBoxDefaultDisabledBackgroundColor" >#FFEBEBEB</Color>
+    <Color x:Key="CheckBoxDefaultPressedBackgroundColor" >#FFCBCBCB</Color>
+
+    <SolidColorBrush x:Key="CheckBoxDefaultForegroundBrush" Color="{StaticResource CheckBoxDefaultForegroundColor}" />
+    <SolidColorBrush x:Key="CheckBoxDefaultBackgroundBrush" Color="{StaticResource CheckBoxDefaultBackgroundColor}" />
+    <SolidColorBrush x:Key="CheckBoxDefaultBorderBrush" Color="{StaticResource CheckBoxDefaultBorderColor}" />
+
+    <Style x:Key="{x:Type CheckBox}" TargetType="{x:Type CheckBox}">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Padding" Value="10,0,10,0" />
+        <Setter Property="Background" Value="{StaticResource BaBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource CheckBoxDefaultForegroundBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{StaticResource BaBackgroundBrush}" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="{StaticResource OpenSans}"/>
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontWeight" Value="Regular" />
+        <Setter Property="MinWidth" Value="23" />
+        <Setter Property="MinHeight" Value="23" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type CheckBox}">
+                    <BulletDecorator Background="Transparent">
+                        <BulletDecorator.Bullet>
+                            <Border x:Name="Border" 
+                                    MinWidth="{TemplateBinding MinWidth}" 
+                                    MinHeight="{TemplateBinding MinHeight}" 
+                                    CornerRadius="3" 
+                                    BorderThickness="{TemplateBinding BorderThickness}" 
+                                    BorderBrush="{TemplateBinding BorderBrush}" 
+                                    Background="{TemplateBinding Background}">
+                                <Grid VerticalAlignment="Stretch" HorizontalAlignment="Center">
+                                    <Path Margin="0,1,0,0" Visibility="Collapsed" 
+                                          x:Name="CheckMark" 
+                                          SnapsToDevicePixels="False" 
+                                          Stroke="white" 
+                                          StrokeThickness="3" 
+                                          Data="M 4 9 L 7 12 13 6" />
+                                    <Path Visibility="Collapsed" 
+                                          x:Name="InderminateMark" 
+                                          SnapsToDevicePixels="False" 
+                                          Stroke="{TemplateBinding Foreground}" 
+                                          StrokeThickness="2" 
+                                          Data="M 0 15 L 15 0" />
+                                </Grid>
+                            </Border>
+                        </BulletDecorator.Bullet>
+                        <!--<Border Margin="4,0,0,0">
+                            <ContentPresenter Margin="{TemplateBinding Padding}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              RecognizesAccessKey="True" />
+                        </Border>-->
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource CheckBoxDefaultMouseOverBackgroundColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource CheckBoxDefaultPressedBackgroundColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled" >
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource CheckBoxDefaultDisabledBackgroundColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="CheckStates">
+                                <VisualState x:Name="Checked">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="CheckMark">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Unchecked" />
+                                <VisualState x:Name="Indeterminate">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="InderminateMark">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </BulletDecorator>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Color x:Key="RadioButtonDefaultBorderColor" >#FFADADAD</Color>
+    <Color x:Key="RadioButtonDefaultForegroundColor" >#FF333333</Color>
+    <Color x:Key="RadioButtonDefaultBackgroundColor" >#FFFFFFFF</Color>
+    <Color x:Key="RadioButtonDefaultMouseOverBackgroundColor" >#FFEBEBEB</Color>
+    <Color x:Key="RadioButtonDefaultDisabledBackgroundColor" >#FFEBEBEB</Color>
+    <Color x:Key="RadioButtonDefaultPressedBackgroundColor" >#FFCBCBCB</Color>
+
+    <SolidColorBrush x:Key="RadioButtonDefaultForegroundBrush" Color="{StaticResource RadioButtonDefaultForegroundColor}" />
+    <SolidColorBrush x:Key="RadioButtonDefaultBackgroundBrush" Color="{StaticResource RadioButtonDefaultBackgroundColor}" />
+    <SolidColorBrush x:Key="RadioButtonDefaultBorderBrush" Color="{StaticResource RadioButtonDefaultBorderColor}" />
+
+    <Style x:Key="{x:Type RadioButton}" TargetType="{x:Type RadioButton}">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Padding" Value="10,0,10,0" />
+        <Setter Property="Background" Value="{StaticResource RadioButtonDefaultBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource RadioButtonDefaultForegroundBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{StaticResource RadioButtonDefaultBorderBrush}" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="{StaticResource OpenSans}"/>
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontWeight" Value="Regular" />
+        <Setter Property="MinWidth" Value="18" />
+        <Setter Property="MinHeight" Value="18" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RadioButton}">
+                    <BulletDecorator Background="Transparent">
+                        <BulletDecorator.Bullet>
+                            <Border x:Name="Border" 
+                                    MinWidth="{TemplateBinding MinWidth}" 
+                                    MinHeight="{TemplateBinding MinHeight}" 
+                                    CornerRadius="2" 
+                                    BorderThickness="{TemplateBinding BorderThickness}" 
+                                    BorderBrush="{TemplateBinding BorderBrush}" 
+                                    Background="{TemplateBinding Background}">
+                                <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                                    <Path Visibility="Collapsed" 
+                                          x:Name="CheckMark" 
+                                          SnapsToDevicePixels="False" 
+                                          Stroke="{TemplateBinding Foreground}" 
+                                          StrokeThickness="2" 
+                                          Data="M 4 9 L 7 12 13 6" />
+                                    <Path Visibility="Collapsed" 
+                                          x:Name="InderminateMark" 
+                                          SnapsToDevicePixels="False" 
+                                          Stroke="{TemplateBinding Foreground}" 
+                                          StrokeThickness="2" 
+                                          Data="M 0 15 L 15 0" />
+                                </Grid>
+                            </Border>
+                        </BulletDecorator.Bullet>
+                        <Border Margin="4,0,0,0">
+                            <ContentPresenter Margin="{TemplateBinding Padding}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              RecognizesAccessKey="True" />
+                        </Border>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource RadioButtonDefaultMouseOverBackgroundColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource RadioButtonDefaultPressedBackgroundColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled" >
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource RadioButtonDefaultDisabledBackgroundColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="CheckStates">
+                                <VisualState x:Name="Checked">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="CheckMark">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Unchecked" />
+                                <VisualState x:Name="Indeterminate">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="InderminateMark">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </BulletDecorator>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Color x:Key="ListBoxDefaultBorderColor" >#FFADADAD</Color>
+    <Color x:Key="ListBoxDefaultForegroundColor" >#FF333333</Color>
+    <Color x:Key="ListBoxDefaultBackgroundColor" >#FFFFFFFF</Color>
+    <Color x:Key="ListBoxDefaultMouseOverBackgroundColor" >#FFEBEBEB</Color>
+    <Color x:Key="ListBoxDefaultDisabledBackgroundColor" >#FFEBEBEB</Color>
+    <Color x:Key="ListBoxDefaultPressedBackgroundColor" >#FFCBCBCB</Color>
+
+    <SolidColorBrush x:Key="ListBoxDefaultForegroundBrush" Color="{StaticResource ListBoxDefaultForegroundColor}" />
+    <SolidColorBrush x:Key="ListBoxDefaultBackgroundBrush" Color="{StaticResource ListBoxDefaultBackgroundColor}" />
+    <SolidColorBrush x:Key="ListBoxDefaultDisabledBackgroundBrush" Color="{StaticResource ListBoxDefaultDisabledBackgroundColor}" />
+    <SolidColorBrush x:Key="ListBoxDefaultBorderBrush" Color="{StaticResource ListBoxDefaultBorderColor}" />
+
+    <Style x:Key="{x:Type ListBox}" TargetType="ListBox">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Background" Value="{StaticResource ListBoxDefaultBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource ListBoxDefaultForegroundBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{StaticResource ListBoxDefaultBorderBrush}" />
+        <Setter Property="FontFamily" Value="{StaticResource OpenSans}"/>
+        <Setter Property="Padding" Value="0,0,0,-1" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontWeight" Value="Regular" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBox">
+                    <Border Name="Border" 
+                            CornerRadius="2" 
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            Background="{TemplateBinding Background}">
+                        <ScrollViewer Margin="0" 
+                                      Focusable="False">
+                            <ItemsPresenter Margin="{TemplateBinding Padding}"/>
+                        </ScrollViewer>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="{StaticResource ListBoxDefaultDisabledBackgroundBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsGrouping" Value="True">
+                            <Setter Property="ScrollViewer.CanContentScroll" Value="False" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <StackPanel />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Color x:Key="ListBoxItemDefaultBorderColor" >#FFADADAD</Color>
+    <Color x:Key="ListBoxItemDefaultForegroundColor" >#FF333333</Color>
+    <Color x:Key="ListBoxItemDefaultBackgroundColor" >#FFFFFFFF</Color>
+    <Color x:Key="ListBoxItemDefaultMouseOverBackgroundColor" >#FFEBEBEB</Color>
+    <Color x:Key="ListBoxItemDefaultDisabledBackgroundColor" >#FFEBEBEB</Color>
+    <Color x:Key="ListBoxItemDefaultSelectedBackgroundColor" >#FFEBEBEB</Color>
+
+    <SolidColorBrush x:Key="ListBoxItemDefaultForegroundBrush" Color="{StaticResource ListBoxItemDefaultForegroundColor}" />
+    <SolidColorBrush x:Key="ListBoxItemDefaultBackgroundBrush" Color="{StaticResource ListBoxItemDefaultBackgroundColor}" />
+    <SolidColorBrush x:Key="ListBoxItemDefaultBorderBrush" Color="{StaticResource ListBoxItemDefaultBorderColor}" />
+
+    <Style x:Key="{x:Type ListBoxItem}" TargetType="ListBoxItem">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Background" Value="{StaticResource ListBoxItemDefaultBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource ListBoxItemDefaultForegroundBrush}" />
+        <Setter Property="BorderThickness" Value="0,0,0,1" />
+        <Setter Property="BorderBrush" Value="{StaticResource ListBoxItemDefaultBorderBrush}" />
+        <Setter Property="FontFamily" Value="{StaticResource OpenSans}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="Padding" Value="10,6,10,6" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontWeight" Value="Regular" />
+        <Setter Property="MinHeight" Value="34" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBoxItem">
+                    <Border x:Name="Border" 
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}" >
+
+                        <ContentPresenter Margin="{TemplateBinding Padding}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource ListBoxItemDefaultMouseOverBackgroundColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource ListBoxItemDefaultDisabledBackgroundColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="SelectionStates">
+                                <VisualState x:Name="Unselected" />
+                                <VisualState x:Name="Selected">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource ListBoxItemDefaultSelectedBackgroundColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="SelectedUnfocused" />
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Color x:Key="TabControlDefaultBorderColor" >#FFADADAD</Color>
+    <Color x:Key="TabControlDefaultForegroundColor" >#FF333333</Color>
+    <Color x:Key="TabControlDefaultBackgroundColor" >#FFFFFFFF</Color>
+    <Color x:Key="TabControlDefaultDisabledBackgroundColor" >#FFEBEBEB</Color>
+
+    <SolidColorBrush x:Key="TabControlDefaultForegroundBrush" Color="{StaticResource TabControlDefaultForegroundColor}" />
+    <SolidColorBrush x:Key="TabControlDefaultBackgroundBrush" Color="{StaticResource TabControlDefaultBackgroundColor}" />
+    <SolidColorBrush x:Key="TabControlDefaultDisabledBackgroundBrush" Color="{StaticResource TabControlDefaultDisabledBackgroundColor}" />
+    <SolidColorBrush x:Key="TabControlDefaultBorderBrush" Color="{StaticResource TabControlDefaultBorderColor}" />
+
+    <Style TargetType="TabControl">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Background" Value="{StaticResource TabControlDefaultBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource TabControlDefaultForegroundBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{StaticResource TabControlDefaultBorderBrush}" />
+        <Setter Property="FontFamily" Value="{StaticResource OpenSans}"/>
+        <Setter Property="Padding" Value="2" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontWeight" Value="Regular" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TabControl}">
+                    <Grid KeyboardNavigation.TabNavigation="Local">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <ItemsPresenter ScrollViewer.CanContentScroll="False" 
+                                        Grid.Row="0" 
+                                        Margin="0" 
+                                        KeyboardNavigation.TabIndex="1" />
+
+                        <Border Grid.Row="1" 
+                                BorderThickness="{TemplateBinding BorderThickness}" 
+                                CornerRadius="0,0,2,2" 
+                                KeyboardNavigation.TabNavigation="Local" 
+                                KeyboardNavigation.DirectionalNavigation="Contained" 
+                                KeyboardNavigation.TabIndex="2"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter x:Name="PART_SelectedContentHost" 
+                                                Margin="{TemplateBinding Padding}"
+                                                Content="{TemplateBinding SelectedContent}" />
+                        </Border>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="{StaticResource TabControlDefaultDisabledBackgroundBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="ItemsPanel">
+            <Setter.Value>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Color x:Key="TabItemDefaultBorderColor">#00FFFFFF</Color>
+    <Color x:Key="TabItemDefaultSelectedBorderColor">#FF333333</Color>
+    <Color x:Key="TabItemDefaultForegroundColor">#FFFFFFFF</Color>
+    <Color x:Key="TabItemDefaultMouseOverForegroundColor">#FFFFFFFF</Color>
+    <Color x:Key="TabItemDefaultSelectedForegroundColor">#FF333333</Color>
+    <Color x:Key="TabItemDefaultDisabledForegroundColor">#FFFFFFFF</Color>
+    <Color x:Key="TabItemDefaultBackgroundColor">#FF333333</Color>
+    <Color x:Key="TabItemDefaultMouseOverBackgroundColor">#FF777777</Color>
+    <Color x:Key="TabItemDefaultDisabledBackgroundColor">#FFEBEBEB</Color>
+    <Color x:Key="TabItemDefaultSelectedBackgroundColor">#FFFFFFFF</Color>
+
+    <SolidColorBrush x:Key="TabItemDefaultForegroundBrush" Color="{StaticResource TabItemDefaultForegroundColor}" />
+    <SolidColorBrush x:Key="TabItemDefaultSelectedForegroundBrush" Color="{StaticResource TabItemDefaultSelectedForegroundColor}" />
+    <SolidColorBrush x:Key="TabItemDefaultMouseOverForegroundBrush" Color="{StaticResource TabItemDefaultMouseOverForegroundColor}" />
+    <SolidColorBrush x:Key="TabItemDefaultDisabledForegroundBrush" Color="{StaticResource TabItemDefaultDisabledBackgroundColor}" />
+    <SolidColorBrush x:Key="TabItemDefaultBackgroundBrush" Color="{StaticResource TabItemDefaultBackgroundColor}" />
+    <SolidColorBrush x:Key="TabItemDefaultMouseOverBackgroundBrush" Color="{StaticResource TabItemDefaultMouseOverBackgroundColor}" />
+    <SolidColorBrush x:Key="TabItemDefaultDisabledBackgroundBrush" Color="{StaticResource TabItemDefaultDisabledBackgroundColor}" />
+    <SolidColorBrush x:Key="TabItemDefaultSelectedBackgroundBrush" Color="{StaticResource TabItemDefaultSelectedBackgroundColor}" />
+    <SolidColorBrush x:Key="TabItemDefaultBorderBrush" Color="{StaticResource TabItemDefaultBorderColor}" />
+    <SolidColorBrush x:Key="TabItemDefaultSelectedBorderBrush" Color="{StaticResource TabItemDefaultSelectedBorderColor}" />
+
+    <Style TargetType="TabItem">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Background" Value="{StaticResource TabItemDefaultBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource TabItemDefaultForegroundBrush}" />
+        <Setter Property="BorderThickness" Value="1,1,1,0" />
+        <Setter Property="BorderBrush" Value="{StaticResource TabItemDefaultBorderBrush}" />
+        <Setter Property="FontFamily" Value="{StaticResource OpenSans}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="29,9,29,9" />
+        <Setter Property="Margin" Value="0,0,2,0" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TabItem">
+                    <Border CornerRadius="2,2,0,0" 
+                            Cursor="Hand" 
+                            Background="{TemplateBinding Background}" 
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            BorderBrush="{TemplateBinding BorderBrush}">
+
+                        <ContentPresenter Margin="{TemplateBinding Padding}" 
+                                          ContentTemplate="{TemplateBinding HeaderTemplate}" 
+                                          Content="{TemplateBinding Header}" 
+                                          RecognizesAccessKey="True" />
+                    </Border>
+
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Foreground" Value="{StaticResource TabItemDefaultSelectedForegroundBrush}" />
+                            <Setter Property="Background" Value="{StaticResource TabItemDefaultSelectedBackgroundBrush}" />
+                            <Setter Property="BorderBrush" Value="{StaticResource TabItemDefaultSelectedBorderBrush}" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="False" />
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+
+                            <Setter Property="Foreground" Value="{StaticResource TabItemDefaultMouseOverForegroundBrush}" />
+                            <Setter Property="Background" Value="{StaticResource TabItemDefaultMouseOverBackgroundBrush}" />
+                        </MultiTrigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="{StaticResource TabItemDefaultDisabledForegroundBrush}" />
+                            <Setter Property="Background" Value="{StaticResource TabItemDefaultDisabledBackgroundBrush}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Color x:Key="DatePickerDefaultBorderColor">#FFADADAD</Color>
+    <Color x:Key="DatePickerDefaultMouseOverBorderColor" >#FFEBEBEB</Color>
+    <Color x:Key="DatePickerDefaultForegroundColor">#FF333333</Color>
+    <Color x:Key="DatePickerDefaultBackgroundColor">#FFFFFFFF</Color>
+    <Color x:Key="DatePickerDefaultDisabledBackgroundColor">#FFEBEBEB</Color>
+
+    <SolidColorBrush x:Key="DatePickerDefaultForegroundBrush" Color="{StaticResource DatePickerDefaultForegroundColor}" />
+    <SolidColorBrush x:Key="DatePickerDefaultBackgroundBrush" Color="{StaticResource DatePickerDefaultBackgroundColor}" />
+    <SolidColorBrush x:Key="DatePickerDefaultBorderBrush" Color="{StaticResource DatePickerDefaultBorderColor}" />
+
+    <Style TargetType="DatePicker">
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Background" Value="{StaticResource DatePickerDefaultBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource DatePickerDefaultForegroundBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{StaticResource DatePickerDefaultBorderBrush}" />
+        <Setter Property="FontFamily" Value="{StaticResource OpenSans}"/>
+        <Setter Property="Padding" Value="4,3,4,3" />
+        <Setter Property="FontSize" Value="13" />
+        <Setter Property="FontWeight" Value="Regular" />
+        <Setter Property="IsTodayHighlighted" Value="True" />
+        <Setter Property="SelectedDateFormat" Value="Short" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type DatePicker}">
+                    <Border x:Name="Border"
+                            CornerRadius="2"
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}">
+
+                        <Grid x:Name="PART_Root">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <DatePickerTextBox x:Name="PART_TextBox" Grid.Column="0"
+                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                               Foreground="{TemplateBinding Foreground}"
+                                               Focusable="{TemplateBinding Focusable}"
+                                               Padding="{TemplateBinding Padding}" 
+                                               Background="Transparent"
+                                               BorderThickness="0"
+                                               BorderBrush="Transparent"/>
+
+                            <Button x:Name="PART_Button" Grid.Column="1" 
+                                    Foreground="{TemplateBinding Foreground}"
+                                    FontFamily="{StaticResource SegoeSymbol}"
+                                    Focusable="False"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Width="20"
+                                    Height="20"
+                                    Margin="5,0,5,0">
+                            </Button>
+
+                            <Grid x:Name="PART_DisabledVisual" 
+                                  Grid.ColumnSpan="2"
+                                  Grid.Column="0" 
+                                  Visibility="Collapsed"/>
+
+                            <Popup x:Name="PART_Popup" Grid.Column="0" Grid.ColumnSpan="2"
+                                   Placement="Bottom" 
+                                   PlacementTarget="{Binding ElementName=PART_TextBox}" 
+                                   IsOpen="{TemplateBinding IsDropDownOpen}" 
+                                   AllowsTransparency="True" 
+                                   Focusable="False" 
+                                   HorizontalOffset="-1" 
+                                   VerticalOffset="8" />
+                        </Grid>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetName="Border" Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource DatePickerDefaultDisabledBackgroundColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="{x:Static GridView.GridViewScrollViewerStyleKey}" TargetType="ScrollViewer">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ScrollViewer">
+                    <Grid Background="{TemplateBinding Background}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <DockPanel Margin="{TemplateBinding Padding}">
+                            <ScrollViewer DockPanel.Dock="Top" 
+                                          HorizontalScrollBarVisibility="Hidden" 
+                                          VerticalScrollBarVisibility="Hidden" 
+                                          Focusable="false">
+                                <GridViewHeaderRowPresenter Margin="0" 
+                                                            Columns="{Binding Path=TemplatedParent.View.Columns, RelativeSource={RelativeSource TemplatedParent}}"
+                                                            ColumnHeaderContainerStyle="{Binding Path=TemplatedParent.View.ColumnHeaderContainerStyle, RelativeSource={RelativeSource TemplatedParent}}"
+                                                            ColumnHeaderTemplate="{Binding Path=TemplatedParent.View.ColumnHeaderTemplate, RelativeSource={RelativeSource TemplatedParent}}"
+                                                            ColumnHeaderTemplateSelector="{Binding Path=TemplatedParent.View.ColumnHeaderTemplateSelector, RelativeSource={RelativeSource TemplatedParent}}"
+                                                            AllowsColumnReorder="{Binding Path=TemplatedParent.View.AllowsColumnReorder, RelativeSource={RelativeSource TemplatedParent}}"
+                                                            ColumnHeaderContextMenu="{Binding Path=TemplatedParent.View.ColumnHeaderContextMenu, RelativeSource={RelativeSource TemplatedParent}}"
+                                                            ColumnHeaderToolTip="{Binding Path=TemplatedParent.View.ColumnHeaderToolTip, RelativeSource={RelativeSource TemplatedParent}}"
+                                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                            </ScrollViewer>
+
+                            <ScrollContentPresenter Name="PART_ScrollContentPresenter"
+                                    KeyboardNavigation.DirectionalNavigation="Local"
+                                    CanContentScroll="True"
+                                    CanHorizontallyScroll="False"
+                                    CanVerticallyScroll="False" />
+                        </DockPanel>
+
+                        <ScrollBar Name="PART_HorizontalScrollBar" 
+                                   Orientation="Horizontal" 
+                                   Grid.Row="1" 
+                                   Grid.Column="0"
+                                   Maximum="{TemplateBinding ScrollableWidth}" 
+                                   ViewportSize="{TemplateBinding ViewportWidth}" 
+                                   Value="{TemplateBinding HorizontalOffset}" 
+                                   Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" />
+
+                        <ScrollBar Name="PART_VerticalScrollBar" 
+                                   Grid.Row="0"
+                                   Grid.Column="1" 
+                                   Maximum="{TemplateBinding ScrollableHeight}" 
+                                   ViewportSize="{TemplateBinding ViewportHeight}" 
+                                   Value="{TemplateBinding VerticalOffset}" 
+                                   Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" />
+
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Color x:Key="GridViewColumnHeaderGripperDefaultBorderColor">#FFADADAD</Color>
+    <Color x:Key="GridViewColumnHeaderGripperDefaultForegroundColor">#FFFFFFFF</Color>
+    <Color x:Key="GridViewColumnHeaderGripperDefaultBackgroundColor">#FFADADAD</Color>
+
+    <SolidColorBrush x:Key="GridViewColumnHeaderGripperDefaultForegroundBrush" Color="{StaticResource GridViewColumnHeaderGripperDefaultForegroundColor}" />
+    <SolidColorBrush x:Key="GridViewColumnHeaderGripperDefaultBackgroundBrush" Color="{StaticResource GridViewColumnHeaderGripperDefaultBackgroundColor}" />
+    <SolidColorBrush x:Key="GridViewColumnHeaderGripperDefaultBorderBrush" Color="{StaticResource GridViewColumnHeaderGripperDefaultBorderColor}" />
+
+    <Style x:Key="GridViewColumnHeaderGripper" TargetType="Thumb">
+        <Setter Property="Width" Value="18" />
+        <Setter Property="Background" Value="{StaticResource GridViewColumnHeaderGripperDefaultBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource GridViewColumnHeaderGripperDefaultBorderBrush}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Thumb}">
+                    <Border Padding="{TemplateBinding Padding}" Background="Transparent">
+                        <Rectangle HorizontalAlignment="Center" Width="1" Fill="{TemplateBinding Background}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Color x:Key="GridViewColumnHeaderDefaultBorderColor">#FFADADAD</Color>
+    <Color x:Key="GridViewColumnHeaderDefaultMouseOverBackgroundColor" >#FFEBEBEB</Color>
+    <Color x:Key="GridViewColumnHeaderDefaultForegroundColor">#FFFFFFFF</Color>
+    <Color x:Key="GridViewColumnHeaderDefaultBackgroundColor">#FF333333</Color>
+
+    <SolidColorBrush x:Key="GridViewColumnHeaderDefaultForegroundBrush" Color="{StaticResource GridViewColumnHeaderDefaultForegroundColor}" />
+    <SolidColorBrush x:Key="GridViewColumnHeaderDefaultBackgroundBrush" Color="{StaticResource GridViewColumnHeaderDefaultBackgroundColor}" />
+    <SolidColorBrush x:Key="GridViewColumnHeaderDefaultBorderBrush" Color="{StaticResource GridViewColumnHeaderDefaultBorderColor}" />
+
+    <Style x:Key="{x:Type GridViewColumnHeader}" TargetType="GridViewColumnHeader">
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="BorderThickness" Value="1,0,0,0" />
+        <Setter Property="MinHeight" Value="34" />
+        <Setter Property="BorderBrush" Value="#357709" />
+        <Setter Property="Foreground" Value="{StaticResource GridViewColumnHeaderDefaultForegroundBrush}" />
+        <Setter Property="Background" Value="{StaticResource BaBackgroundBrush}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="GridViewColumnHeader">
+                    <Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver" />
+                                <!--<VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="HeaderBorder">
+                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource GridViewColumnHeaderDefaultMouseOverBackgroundColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>-->
+                                <VisualState x:Name="Pressed" />
+                                <VisualState x:Name="Disabled" />
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Border x:Name="HeaderBorder" 
+                                BorderThickness="0,0,1,0" 
+                                BorderBrush="#357709"
+                                Background="{TemplateBinding Background}"
+                                Padding="{TemplateBinding Padding}">
+
+                            <ContentPresenter x:Name="HeaderContent"
+                                              Margin="0,0,0,1"
+                                              RecognizesAccessKey="True"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                        </Border>
+                        <Thumb x:Name="PART_HeaderGripper" 
+                               HorizontalAlignment="Right"
+                               Margin="0,0,-9,0"
+                               Style="{StaticResource GridViewColumnHeaderGripper}" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="Role" Value="Floating">
+                <Setter Property="Opacity" Value="0.7" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="GridViewColumnHeader">
+                            <Canvas Name="PART_FloatingHeaderCanvas">
+                                <Rectangle Fill="#60000000" Width="{TemplateBinding ActualWidth}" Height="{TemplateBinding ActualHeight}" />
+                            </Canvas>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="Role" Value="Padding">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="GridViewColumnHeader">
+                            <Border BorderThickness="{TemplateBinding BorderThickness}" 
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    Background="{TemplateBinding Background}"/>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Color x:Key="ListViewDefaultBorderColor">#FFADADAD</Color>
+    <Color x:Key="ListViewDefaultMouseOverBackgroundColor" >#FFEBEBEB</Color>
+    <Color x:Key="ListViewDefaultForegroundColor">#FF333333</Color>
+    <Color x:Key="ListViewDefaultBackgroundColor">#FFFFFFFF</Color>
+    <Color x:Key="ListViewDefaultDisabledBackgroundColor">#FFFFFFFF</Color>
+
+    <SolidColorBrush x:Key="ListViewDefaultForegroundBrush" Color="{StaticResource ListViewDefaultForegroundColor}" />
+    <SolidColorBrush x:Key="ListViewDefaultBackgroundBrush" Color="{StaticResource ListViewDefaultBackgroundColor}" />
+    <SolidColorBrush x:Key="ListViewDefaultBorderBrush" Color="{StaticResource ListViewDefaultBorderColor}" />
+
+    <Style x:Key="{x:Type ListView}" TargetType="ListView">
+        <Setter Property="SnapsToDevicePixels" Value="true" />
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+        <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Background" Value="{StaticResource ListViewDefaultBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource ListViewDefaultBorderBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource ListViewDefaultForegroundBrush}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListView">
+                    <Border CornerRadius="2"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            Background="{TemplateBinding Background}">
+                        <ScrollViewer Style="{DynamicResource {x:Static GridView.GridViewScrollViewerStyleKey}}">
+                            <ItemsPresenter />
+                        </ScrollViewer>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsGrouping" Value="true">
+                            <Setter Property="ScrollViewer.CanContentScroll" Value="False" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Background" Value="{StaticResource ListViewDefaultDisabledBackgroundColor}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Color x:Key="ListViewItemDefaultBorderColor">#FFADADAD</Color>
+    <Color x:Key="ListViewItemDefaultMouseOverBackgroundColor" >#FFEBEBEB</Color>
+    <Color x:Key="ListViewItemDefaultForegroundColor">#FF333333</Color>
+    <Color x:Key="ListViewItemDefaultBackgroundColor">#00FFFFFF</Color>
+    <Color x:Key="ListViewItemDefaultDisabledBackgroundColor">#FFFFFFFF</Color>
+
+    <SolidColorBrush x:Key="ListViewItemDefaultForegroundBrush" Color="{StaticResource ListViewItemDefaultForegroundColor}" />
+    <SolidColorBrush x:Key="ListViewItemDefaultBackgroundBrush" Color="{StaticResource ListViewItemDefaultBackgroundColor}" />
+    <SolidColorBrush x:Key="ListViewItemDefaultBorderBrush" Color="{StaticResource ListViewItemDefaultBorderColor}" />
+
+    <Style x:Key="{x:Type ListViewItem}" TargetType="ListViewItem">
+        <Setter Property="SnapsToDevicePixels" Value="true" />
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="BorderThickness" Value="0,0,0,1" />
+        <Setter Property="Background" Value="{StaticResource ListViewItemDefaultBackgroundBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource ListViewItemDefaultBorderBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource ListViewItemDefaultForegroundBrush}" />
+        <Setter Property="Padding" Value="2" />
+        <Setter Property="MinHeight" Value="34" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListBoxItem">
+                    <Border x:Name="Border" 
+                            SnapsToDevicePixels="true" 
+                            Padding="{TemplateBinding Padding}" 
+                            Background="{TemplateBinding Background}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="MouseOver" />
+                                <VisualState x:Name="Disabled" />
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="SelectionStates">
+                                <VisualState x:Name="Unselected" />
+                                <VisualState x:Name="Selected">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource ListViewDefaultMouseOverBackgroundColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="SelectedUnfocused">
+                                    <Storyboard>
+                                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)">
+                                            <EasingColorKeyFrame KeyTime="0" Value="{StaticResource ListViewDefaultMouseOverBackgroundColor}" />
+                                        </ColorAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <GridViewRowPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="controls:ProgressRing">
+        <Setter Property="Foreground"
+                Value="#FF333333" />
+        <Setter Property="IsHitTestVisible"
+                Value="False" />
+        <Setter Property="HorizontalAlignment"
+                Value="Stretch" />
+        <Setter Property="VerticalAlignment"
+                Value="Stretch" />
+        <Setter Property="MinHeight"
+                Value="20" />
+        <Setter Property="MinWidth"
+                Value="20" />
+        <Setter Property="Height"
+                Value="20" />
+        <Setter Property="Width"
+                Value="20" />
+        <Setter Property="IsTabStop"
+                Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="controls:ProgressRing">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}">
+                        <Border.Resources>
+                            <Style x:Key="ProgressRingEllipseStyle"
+                                   TargetType="Ellipse">
+                                <Setter Property="Opacity"
+                                        Value="0" />
+                                <Setter Property="HorizontalAlignment"
+                                        Value="Left" />
+                                <Setter Property="VerticalAlignment"
+                                        Value="Top" />
+                            </Style>
+
+                        </Border.Resources>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="SizeStates">
+                                <VisualState x:Name="Large">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Duration="0"
+                                                                       Storyboard.TargetName="SixthCircle"
+                                                                       Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Visible</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Small" />
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="ActiveStates">
+                                <VisualState x:Name="Inactive" />
+                                <VisualState x:Name="Active">
+                                    <Storyboard RepeatBehavior="Forever">
+                                        <ObjectAnimationUsingKeyFrames Duration="0"
+                                                                       Storyboard.TargetName="Ring"
+                                                                       Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Visible</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="E1"
+                                                                       Storyboard.TargetProperty="Opacity"
+                                                                       BeginTime="0">
+                                            <DiscreteDoubleKeyFrame KeyTime="0"
+                                                                    Value="1" />
+                                            <DiscreteDoubleKeyFrame KeyTime="0:0:3.21"
+                                                                    Value="1" />
+                                            <DiscreteDoubleKeyFrame KeyTime="0:0:3.22"
+                                                                    Value="0" />
+                                            <DiscreteDoubleKeyFrame KeyTime="0:0:3.47"
+                                                                    Value="0" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="E2"
+                                                                       Storyboard.TargetProperty="Opacity"
+                                                                       BeginTime="00:00:00.167">
+                                            <DiscreteDoubleKeyFrame KeyTime="0"
+                                                                    Value="1" />
+                                            <DiscreteDoubleKeyFrame KeyTime="0:0:3.21"
+                                                                    Value="1" />
+                                            <DiscreteDoubleKeyFrame KeyTime="0:0:3.22"
+                                                                    Value="0" />
+                                            <DiscreteDoubleKeyFrame KeyTime="0:0:3.47"
+                                                                    Value="0" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="E3"
+                                                                       Storyboard.TargetProperty="Opacity"
+                                                                       BeginTime="00:00:00.334">
+                                            <DiscreteDoubleKeyFrame KeyTime="0"
+                                                                    Value="1" />
+                                            <DiscreteDoubleKeyFrame KeyTime="0:0:3.21"
+                                                                    Value="1" />
+                                            <DiscreteDoubleKeyFrame KeyTime="0:0:3.22"
+                                                                    Value="0" />
+                                            <DiscreteDoubleKeyFrame KeyTime="0:0:3.47"
+                                                                    Value="0" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="E4"
+                                                                       Storyboard.TargetProperty="Opacity"
+                                                                       BeginTime="00:00:00.501">
+                                            <DiscreteDoubleKeyFrame KeyTime="0"
+                                                                    Value="1" />
+                                            <DiscreteDoubleKeyFrame KeyTime="0:0:3.21"
+                                                                    Value="1" />
+                                            <DiscreteDoubleKeyFrame KeyTime="0:0:3.22"
+                                                                    Value="0" />
+                                            <DiscreteDoubleKeyFrame KeyTime="0:0:3.47"
+                                                                    Value="0" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="E5"
+                                                                       Storyboard.TargetProperty="Opacity"
+                                                                       BeginTime="00:00:00.668">
+                                            <DiscreteDoubleKeyFrame KeyTime="0"
+                                                                    Value="1" />
+                                            <DiscreteDoubleKeyFrame KeyTime="0:0:3.21"
+                                                                    Value="1" />
+                                            <DiscreteDoubleKeyFrame KeyTime="0:0:3.22"
+                                                                    Value="0" />
+                                            <DiscreteDoubleKeyFrame KeyTime="0:0:3.47"
+                                                                    Value="0" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="E6"
+                                                                       Storyboard.TargetProperty="Opacity"
+                                                                       BeginTime="00:00:00.835">
+                                            <DiscreteDoubleKeyFrame KeyTime="0"
+                                                                    Value="1" />
+                                            <DiscreteDoubleKeyFrame KeyTime="0:0:3.21"
+                                                                    Value="1" />
+                                            <DiscreteDoubleKeyFrame KeyTime="0:0:3.22"
+                                                                    Value="0" />
+                                            <DiscreteDoubleKeyFrame KeyTime="0:0:3.47"
+                                                                    Value="0" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="E1R"
+                                                                       BeginTime="0"
+                                                                       Storyboard.TargetProperty="Angle">
+                                            <SplineDoubleKeyFrame KeyTime="0"
+                                                                  Value="-110"
+                                                                  KeySpline="0.13,0.21,0.1,0.7" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0.433"
+                                                                  Value="10"
+                                                                  KeySpline="0.02,0.33,0.38,0.77" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:1.2"
+                                                                  Value="93" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:1.617"
+                                                                  Value="205"
+                                                                  KeySpline="0.57,0.17,0.95,0.75" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:2.017"
+                                                                  Value="357"
+                                                                  KeySpline="0,0.19,0.07,0.72" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:2.783"
+                                                                  Value="439" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:3.217"
+                                                                  Value="585"
+                                                                  KeySpline="0,0,0.95,0.37" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="E2R"
+                                                                       BeginTime="00:00:00.167"
+                                                                       Storyboard.TargetProperty="Angle">
+                                            <SplineDoubleKeyFrame KeyTime="0"
+                                                                  Value="-116"
+                                                                  KeySpline="0.13,0.21,0.1,0.7" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0.433"
+                                                                  Value="4"
+                                                                  KeySpline="0.02,0.33,0.38,0.77" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:1.2"
+                                                                  Value="87" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:1.617"
+                                                                  Value="199"
+                                                                  KeySpline="0.57,0.17,0.95,0.75" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:2.017"
+                                                                  Value="351"
+                                                                  KeySpline="0,0.19,0.07,0.72" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:2.783"
+                                                                  Value="433" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:3.217"
+                                                                  Value="579"
+                                                                  KeySpline="0,0,0.95,0.37" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="E3R"
+                                                                       BeginTime="00:00:00.334"
+                                                                       Storyboard.TargetProperty="Angle">
+                                            <SplineDoubleKeyFrame KeyTime="0"
+                                                                  Value="-122"
+                                                                  KeySpline="0.13,0.21,0.1,0.7" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0.433"
+                                                                  Value="-2"
+                                                                  KeySpline="0.02,0.33,0.38,0.77" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:1.2"
+                                                                  Value="81" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:1.617"
+                                                                  Value="193"
+                                                                  KeySpline="0.57,0.17,0.95,0.75" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:2.017"
+                                                                  Value="345"
+                                                                  KeySpline="0,0.19,0.07,0.72" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:2.783"
+                                                                  Value="427" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:3.217"
+                                                                  Value="573"
+                                                                  KeySpline="0,0,0.95,0.37" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="E4R"
+                                                                       BeginTime="00:00:00.501"
+                                                                       Storyboard.TargetProperty="Angle">
+                                            <SplineDoubleKeyFrame KeyTime="0"
+                                                                  Value="-128"
+                                                                  KeySpline="0.13,0.21,0.1,0.7" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0.433"
+                                                                  Value="-8"
+                                                                  KeySpline="0.02,0.33,0.38,0.77" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:1.2"
+                                                                  Value="75" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:1.617"
+                                                                  Value="187"
+                                                                  KeySpline="0.57,0.17,0.95,0.75" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:2.017"
+                                                                  Value="339"
+                                                                  KeySpline="0,0.19,0.07,0.72" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:2.783"
+                                                                  Value="421" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:3.217"
+                                                                  Value="567"
+                                                                  KeySpline="0,0,0.95,0.37" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="E5R"
+                                                                       BeginTime="00:00:00.668"
+                                                                       Storyboard.TargetProperty="Angle">
+                                            <SplineDoubleKeyFrame KeyTime="0"
+                                                                  Value="-134"
+                                                                  KeySpline="0.13,0.21,0.1,0.7" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0.433"
+                                                                  Value="-14"
+                                                                  KeySpline="0.02,0.33,0.38,0.77" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:1.2"
+                                                                  Value="69" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:1.617"
+                                                                  Value="181"
+                                                                  KeySpline="0.57,0.17,0.95,0.75" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:2.017"
+                                                                  Value="331"
+                                                                  KeySpline="0,0.19,0.07,0.72" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:2.783"
+                                                                  Value="415" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:3.217"
+                                                                  Value="561"
+                                                                  KeySpline="0,0,0.95,0.37" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <DoubleAnimationUsingKeyFrames Storyboard.TargetName="E6R"
+                                                                       BeginTime="00:00:00.835"
+                                                                       Storyboard.TargetProperty="Angle">
+                                            <SplineDoubleKeyFrame KeyTime="0"
+                                                                  Value="-140"
+                                                                  KeySpline="0.13,0.21,0.1,0.7" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:0.433"
+                                                                  Value="-20"
+                                                                  KeySpline="0.02,0.33,0.38,0.77" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:1.2"
+                                                                  Value="63" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:1.617"
+                                                                  Value="175"
+                                                                  KeySpline="0.57,0.17,0.95,0.75" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:2.017"
+                                                                  Value="325"
+                                                                  KeySpline="0,0.19,0.07,0.72" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:2.783"
+                                                                  Value="409" />
+                                            <SplineDoubleKeyFrame KeyTime="0:0:3.217"
+                                                                  Value="555"
+                                                                  KeySpline="0,0,0.95,0.37" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Grid x:Name="Ring"
+                              Margin="{TemplateBinding Padding}"
+                              MaxWidth="{Binding MaxSideLength, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                              MaxHeight="{Binding MaxSideLength, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                              Visibility="Collapsed"
+                              RenderTransformOrigin=".5,.5"
+                              FlowDirection="LeftToRight">
+
+                            <Canvas RenderTransformOrigin=".5,.5">
+                                <Canvas.RenderTransform>
+                                    <RotateTransform x:Name="E1R" />
+                                </Canvas.RenderTransform>
+                                <Ellipse x:Name="E1"
+                                         Style="{StaticResource ProgressRingEllipseStyle}"
+                                         Width="{Binding EllipseDiameter, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                         Height="{Binding EllipseDiameter, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                         Margin="{Binding EllipseOffset, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                         Fill="{TemplateBinding Foreground}" />
+                            </Canvas>
+                            <Canvas RenderTransformOrigin=".5,.5">
+                                <Canvas.RenderTransform>
+                                    <RotateTransform x:Name="E2R" />
+                                </Canvas.RenderTransform>
+                                <Ellipse x:Name="E2"
+                                         Style="{StaticResource ProgressRingEllipseStyle}"
+                                         Width="{Binding EllipseDiameter, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                         Height="{Binding EllipseDiameter, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                         Margin="{Binding EllipseOffset, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                         Fill="{TemplateBinding Foreground}" />
+                            </Canvas>
+                            <Canvas RenderTransformOrigin=".5,.5">
+                                <Canvas.RenderTransform>
+                                    <RotateTransform x:Name="E3R" />
+                                </Canvas.RenderTransform>
+                                <Ellipse x:Name="E3"
+                                         Style="{StaticResource ProgressRingEllipseStyle}"
+                                         Width="{Binding EllipseDiameter, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                         Height="{Binding EllipseDiameter, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                         Margin="{Binding EllipseOffset, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                         Fill="{TemplateBinding Foreground}" />
+                            </Canvas>
+                            <Canvas RenderTransformOrigin=".5,.5">
+                                <Canvas.RenderTransform>
+                                    <RotateTransform x:Name="E4R" />
+                                </Canvas.RenderTransform>
+                                <Ellipse x:Name="E4"
+                                         Style="{StaticResource ProgressRingEllipseStyle}"
+                                         Width="{Binding EllipseDiameter, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                         Height="{Binding EllipseDiameter, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                         Margin="{Binding EllipseOffset, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                         Fill="{TemplateBinding Foreground}" />
+                            </Canvas>
+                            <Canvas RenderTransformOrigin=".5,.5">
+                                <Canvas.RenderTransform>
+                                    <RotateTransform x:Name="E5R" />
+                                </Canvas.RenderTransform>
+                                <Ellipse x:Name="E5"
+                                         Style="{StaticResource ProgressRingEllipseStyle}"
+                                         Width="{Binding EllipseDiameter, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                         Height="{Binding EllipseDiameter, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                         Margin="{Binding EllipseOffset, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                         Fill="{TemplateBinding Foreground}" />
+                            </Canvas>
+                            <Canvas RenderTransformOrigin=".5,.5"
+                                    Visibility="Collapsed"
+                                    x:Name="SixthCircle">
+                                <Canvas.RenderTransform>
+                                    <RotateTransform x:Name="E6R" />
+                                </Canvas.RenderTransform>
+                                <Ellipse x:Name="E6"
+                                         Style="{StaticResource ProgressRingEllipseStyle}"
+                                         Width="{Binding EllipseDiameter, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                         Height="{Binding EllipseDiameter, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                         Margin="{Binding EllipseOffset, RelativeSource={RelativeSource Mode=TemplatedParent}}"
+                                         Fill="{TemplateBinding Foreground}" />
+                            </Canvas>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    <converters:BooleanToInvertedVisibilityConverter x:Key="BooleanToInvertedVisibilityConverter" />
+</ResourceDictionary>

@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6D4EA7B4-E783-4AFE-AF1C-6047C5A99177}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GameLogic</RootNamespace>
+    <AssemblyName>GameLogic</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release Package|AnyCPU'">
+    <OutputPath>bin\Release Package\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ReleasePackage|AnyCPU'">
+    <OutputPath>bin\ReleasePackage\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccessManager.cs" />
+    <Compile Include="AuthException.cs" />
+    <Compile Include="ClientCode.cs" />
+    <Compile Include="GameModel.cs" />
+    <Compile Include="GameDetails.cs" />
+    <Compile Include="GameInfo.cs" />
+    <Compile Include="GameLiveInfo.cs" />
+    <Compile Include="GameManager.cs" />
+    <Compile Include="GameProtocol.cs" />
+    <Compile Include="IAccessManager.cs" />
+    <Compile Include="OpenAccessManager.cs" />
+    <Compile Include="PlayerMode.cs" />
+    <Compile Include="GameServer.cs" />
+    <Compile Include="GameViewInfo.cs" />
+    <Compile Include="MapChange.cs" />
+    <Compile Include="MapData.cs" />
+    <Compile Include="ObservedGameInfo.cs" />
+    <Compile Include="ObservedTurnInfo.cs" />
+    <Compile Include="Observer.cs" />
+    <Compile Include="ObserverInfo.cs" />
+    <Compile Include="ObserverQueue.cs" />
+    <Compile Include="Player.cs" />
+    <Compile Include="PlayerInfo.cs" />
+    <Compile Include="PlayerLiveInfo.cs" />
+    <Compile Include="PlayerStateInfo.cs" />
+    <Compile Include="Point.cs" />
+    <Compile Include="ReplayDetector.cs" />
+    <Compile Include="RulesException.cs" />
+    <Compile Include="Team.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SessionAuth.cs" />
+    <Compile Include="SessionManager.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="TeamRegistry.cs" />
+    <Compile Include="UserManagement\TeamRole.cs" />
+    <Compile Include="WaitException.cs" />
+    <Compile Include="WaitTurnInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

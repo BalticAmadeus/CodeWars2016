@@ -1,0 +1,149 @@
+﻿<UserControl x:Class="Game.DebugClient.Views.Flows.PlayerModeFlowView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:viewModel="clr-namespace:Game.DebugClient.ViewModel"
+             xmlns:converters="clr-namespace:Game.DebugClient.Converters"
+             mc:Ignorable="d"
+             d:DesignHeight="1400" d:DesignWidth="980">
+    <UserControl.Resources>
+        <converters:CellStateConverter x:Key="MapStateConverter" />
+        <converters:PlayerIndexColorConverter x:Key="PlayerIndexConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="{Binding Title, FallbackValue=Title}" Margin="0,0,0,10"
+                   Style="{StaticResource H3}" />
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <Grid Margin="0,0,10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100" SharedSizeGroup="A" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="100" SharedSizeGroup="A" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" Margin="0,0,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Column="0" Height="400" BorderThickness="1" BorderBrush="LightGray">
+                        <ListBox x:Name="GameBoard"
+                                 ScrollViewer.CanContentScroll="True"
+                                 SelectedItem="{Binding SelectedCell}"
+                                 ItemsSource="{Binding CellCollection}">
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <Canvas />
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                                    <Setter Property="Canvas.Left" Value="{Binding Path=Left}" />
+                                    <Setter Property="Canvas.Top" Value="{Binding Path=Top}" />
+                                    <Setter Property="Padding" Value="0" />
+                                    <Setter Property="BorderThickness" Value="0" />
+                                    <Setter Property="BorderBrush" Value="Transparent" />
+                                    <Setter Property="Margin" Value="0" />
+                                    <Setter Property="MinHeight" Value="0" />
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border x:Name="ItemBorder"
+                                            Width="{x:Static viewModel:CellViewModel.CellSize}"
+                                            Height="{x:Static viewModel:CellViewModel.CellSize}"
+                                            Background="{Binding State, Converter={StaticResource MapStateConverter}}">
+                                   
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Border>
+
+                    <Grid Grid.Column="1" Margin="20,0,0,0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60" />
+                                <ColumnDefinition Width="40" />
+                                <ColumnDefinition Width="90" />
+                                <ColumnDefinition Width="30" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0" x:Name="Column4" />
+                            <Grid Grid.Column="1" x:Name="Column5" />
+                            <Grid Grid.Column="2" x:Name="Column6" />
+                        </Grid>
+
+                        <ListView ItemsSource="{Binding MoveCollection}" SelectedValue="{Binding SelectedActor}">
+                            <ListView.View>
+                                <GridView AllowsColumnReorder="False">
+                                    <GridViewColumn Width="{Binding ActualWidth, ElementName=Column4}">
+                                        <GridViewColumn.HeaderTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="Actor" Margin="5,0,5,0"
+                                                           Style="{StaticResource NormalText}" Foreground="White" />
+                                            </DataTemplate>
+                                        </GridViewColumn.HeaderTemplate>
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Path=Name}" Margin="5,0,5,0" />
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="{Binding ActualWidth, ElementName=Column5}">
+                                        <GridViewColumn.HeaderTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="" Margin="5,0,5,0"
+                                                           Style="{StaticResource NormalText}" Foreground="White" />
+                                            </DataTemplate>
+                                        </GridViewColumn.HeaderTemplate>
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Border
+                                                    Background="{Binding Path=Model, Converter={StaticResource PlayerIndexConverter}}"
+                                                    Width="10" Height="10" Margin="5,3,5,3"
+                                                    HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="{Binding ActualWidth, ElementName=Column6}">
+                                        <GridViewColumn.HeaderTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="Move" Margin="5,0,5,0"
+                                                           Style="{StaticResource NormalText}" Foreground="White" />
+                                            </DataTemplate>
+                                        </GridViewColumn.HeaderTemplate>
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Path=Move}" Margin="5,0,5,0" />
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+                </Grid>
+
+                <Button Command="{Binding SubmitCommand}" IsEnabled="{Binding CanSubmit}" HorizontalAlignment="Left" Width="80" Grid.Column="3" Margin="0,0,0,10" Grid.Row="1" Content="_Submit"></Button>
+                <Button Command="{Binding CancelCommand}" HorizontalAlignment="Right" Width="80" Grid.Column="3" Margin="0,0,0,10" Grid.Row="1" Content="_Stop"></Button>
+            </Grid>
+        </ScrollViewer>
+
+    </Grid>
+</UserControl>

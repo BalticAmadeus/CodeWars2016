@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Game.WebService.Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Game.WebService.Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:60044/AdminService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://localhost:60044/AdminService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/GameLogic.UserManagement" />
+  <xs:complexType name="InitLoginReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReq">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="InitLoginReq" nillable="true" type="tns:InitLoginReq" />
+  <xs:complexType name="BaseReq">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Auth" nillable="true" type="tns:ReqAuth" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BaseReq" nillable="true" type="tns:BaseReq" />
+  <xs:complexType name="ReqAuth">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AuthCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClientName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SequenceNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="SessionId" type="xs:int" />
+      <xs:element minOccurs="0" name="TeamName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReqAuth" nillable="true" type="tns:ReqAuth" />
+  <xs:complexType name="InitLoginResp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseResp">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Challenge" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="InitLoginResp" nillable="true" type="tns:InitLoginResp" />
+  <xs:complexType name="BaseResp">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BaseResp" nillable="true" type="tns:BaseResp" />
+  <xs:complexType name="CompleteLoginReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReq">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ChallengeResponse" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CompleteLoginReq" nillable="true" type="tns:CompleteLoginReq" />
+  <xs:complexType name="CompleteLoginResp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseResp">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="SessionId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CompleteLoginResp" nillable="true" type="tns:CompleteLoginResp" />
+  <xs:complexType name="ListGamesReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReq">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ListGamesReq" nillable="true" type="tns:ListGamesReq" />
+  <xs:complexType name="ListGamesResp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseResp">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Games" nillable="true" type="tns:ArrayOfEnGameInfo" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ListGamesResp" nillable="true" type="tns:ListGamesResp" />
+  <xs:complexType name="ArrayOfEnGameInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EnGameInfo" nillable="true" type="tns:EnGameInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEnGameInfo" nillable="true" type="tns:ArrayOfEnGameInfo" />
+  <xs:complexType name="EnGameInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GameId" type="xs:int" />
+      <xs:element minOccurs="0" name="Label" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EnGameInfo" nillable="true" type="tns:EnGameInfo" />
+  <xs:complexType name="CreateGameReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReq">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CreateGameReq" nillable="true" type="tns:CreateGameReq" />
+  <xs:complexType name="CreateGameResp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseResp">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GameInfo" nillable="true" type="tns:EnGameInfo" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CreateGameResp" nillable="true" type="tns:CreateGameResp" />
+  <xs:complexType name="GetGameDetailsReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReq">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GameId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetGameDetailsReq" nillable="true" type="tns:GetGameDetailsReq" />
+  <xs:complexType name="GetGameDetailsResp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseResp">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GameDetails" nillable="true" type="tns:EnGameDetails" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetGameDetailsResp" nillable="true" type="tns:GetGameDetailsResp" />
+  <xs:complexType name="EnGameDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GameId" type="xs:int" />
+      <xs:element minOccurs="0" name="Label" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Players" nillable="true" type="tns:ArrayOfEnPlayerInfo" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EnGameDetails" nillable="true" type="tns:EnGameDetails" />
+  <xs:complexType name="ArrayOfEnPlayerInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EnPlayerInfo" nillable="true" type="tns:EnPlayerInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEnPlayerInfo" nillable="true" type="tns:ArrayOfEnPlayerInfo" />
+  <xs:complexType name="EnPlayerInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GameId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PlayerId" type="xs:int" />
+      <xs:element minOccurs="0" name="Team" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EnPlayerInfo" nillable="true" type="tns:EnPlayerInfo" />
+  <xs:complexType name="ListPlayersReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReq">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ListPlayersReq" nillable="true" type="tns:ListPlayersReq" />
+  <xs:complexType name="ListPlayersResp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseResp">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Players" nillable="true" type="tns:ArrayOfEnPlayerInfo" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ListPlayersResp" nillable="true" type="tns:ListPlayersResp" />
+  <xs:complexType name="AddGamePlayerReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReq">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GameId" type="xs:int" />
+          <xs:element minOccurs="0" name="PlayerId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AddGamePlayerReq" nillable="true" type="tns:AddGamePlayerReq" />
+  <xs:complexType name="AddGamePlayerResp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseResp">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AddGamePlayerResp" nillable="true" type="tns:AddGamePlayerResp" />
+  <xs:complexType name="RemoveGamePlayerReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReq">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GameId" type="xs:int" />
+          <xs:element minOccurs="0" name="PlayerId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RemoveGamePlayerReq" nillable="true" type="tns:RemoveGamePlayerReq" />
+  <xs:complexType name="RemoveGamePlayerResp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseResp">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="RemoveGamePlayerResp" nillable="true" type="tns:RemoveGamePlayerResp" />
+  <xs:complexType name="SetGameMapReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReq">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GameId" type="xs:int" />
+          <xs:element minOccurs="0" name="MapData" nillable="true" type="tns:EnMapData" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SetGameMapReq" nillable="true" type="tns:SetGameMapReq" />
+  <xs:complexType name="EnMapData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Height" type="xs:int" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Rows" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element minOccurs="0" name="Width" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EnMapData" nillable="true" type="tns:EnMapData" />
+  <xs:complexType name="SetGameMapResp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseResp">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SetGameMapResp" nillable="true" type="tns:SetGameMapResp" />
+  <xs:complexType name="StartGameReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReq">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GameId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StartGameReq" nillable="true" type="tns:StartGameReq" />
+  <xs:complexType name="StartGameResp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseResp">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StartGameResp" nillable="true" type="tns:StartGameResp" />
+  <xs:complexType name="PauseGameReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReq">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GameId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PauseGameReq" nillable="true" type="tns:PauseGameReq" />
+  <xs:complexType name="PauseGameResp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseResp">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PauseGameResp" nillable="true" type="tns:PauseGameResp" />
+  <xs:complexType name="ResumeGameReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReq">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GameId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ResumeGameReq" nillable="true" type="tns:ResumeGameReq" />
+  <xs:complexType name="ResumeGameResp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseResp">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ResumeGameResp" nillable="true" type="tns:ResumeGameResp" />
+  <xs:complexType name="CreateObserverReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReq">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CreateObserverReq" nillable="true" type="tns:CreateObserverReq" />
+  <xs:complexType name="CreateObserverResp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseResp">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ObserverId" type="xs:int" />
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/GameLogic.UserManagement" minOccurs="0" name="Role" type="q2:TeamRole" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CreateObserverResp" nillable="true" type="tns:CreateObserverResp" />
+  <xs:complexType name="StartObservingReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReq">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GameId" type="xs:int" />
+          <xs:element minOccurs="0" name="ObserverId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StartObservingReq" nillable="true" type="tns:StartObservingReq" />
+  <xs:complexType name="StartObservingResp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseResp">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GameDetails" nillable="true" type="tns:EnGameDetails" />
+          <xs:element minOccurs="0" name="GhostPositions" nillable="true" type="tns:ArrayOfEnPoint" />
+          <xs:element minOccurs="0" name="MapData" nillable="true" type="tns:EnMapData" />
+          <xs:element minOccurs="0" name="PlayerStates" nillable="true" type="tns:ArrayOfEnPlayerState" />
+          <xs:element minOccurs="0" name="TecmanPosition" nillable="true" type="tns:EnPoint" />
+          <xs:element minOccurs="0" name="Turn" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="StartObservingResp" nillable="true" type="tns:StartObservingResp" />
+  <xs:complexType name="ArrayOfEnPoint">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EnPoint" nillable="true" type="tns:EnPoint" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEnPoint" nillable="true" type="tns:ArrayOfEnPoint" />
+  <xs:complexType name="EnPoint">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Col" type="xs:int" />
+      <xs:element minOccurs="0" name="Row" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EnPoint" nillable="true" type="tns:EnPoint" />
+  <xs:complexType name="ArrayOfEnPlayerState">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EnPlayerState" nillable="true" type="tns:EnPlayerState" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEnPlayerState" nillable="true" type="tns:ArrayOfEnPlayerState" />
+  <xs:complexType name="EnPlayerState">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Condition" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Mode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Score" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EnPlayerState" nillable="true" type="tns:EnPlayerState" />
+  <xs:complexType name="ObserveNextTurnReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReq">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GameId" type="xs:int" />
+          <xs:element minOccurs="0" name="ObserverId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ObserveNextTurnReq" nillable="true" type="tns:ObserveNextTurnReq" />
+  <xs:complexType name="ObserveNextTurnResp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseResp">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GameInfo" nillable="true" type="tns:EnObsGameInfo" />
+          <xs:element minOccurs="0" name="TurnInfo" nillable="true" type="tns:EnObsTurnInfo" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ObserveNextTurnResp" nillable="true" type="tns:ObserveNextTurnResp" />
+  <xs:complexType name="EnObsGameInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GameId" type="xs:int" />
+      <xs:element minOccurs="0" name="GameState" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="QueuedTurns" type="xs:int" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SlowPlayers" nillable="true" type="q3:ArrayOfint" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EnObsGameInfo" nillable="true" type="tns:EnObsGameInfo" />
+  <xs:complexType name="EnObsTurnInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GameState" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GhostPositions" nillable="true" type="tns:ArrayOfEnPoint" />
+      <xs:element minOccurs="0" name="MapChanges" nillable="true" type="tns:ArrayOfEnMapChange" />
+      <xs:element minOccurs="0" name="PlayerStates" nillable="true" type="tns:ArrayOfEnPlayerState" />
+      <xs:element minOccurs="0" name="TecmanPosition" nillable="true" type="tns:EnPoint" />
+      <xs:element minOccurs="0" name="Turn" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EnObsTurnInfo" nillable="true" type="tns:EnObsTurnInfo" />
+  <xs:complexType name="ArrayOfEnMapChange">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EnMapChange" nillable="true" type="tns:EnMapChange" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEnMapChange" nillable="true" type="tns:ArrayOfEnMapChange" />
+  <xs:complexType name="EnMapChange">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Position" nillable="true" type="tns:EnPoint" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EnMapChange" nillable="true" type="tns:EnMapChange" />
+  <xs:complexType name="DropPlayerReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReq">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GameId" type="xs:int" />
+          <xs:element minOccurs="0" name="PlayerId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DropPlayerReq" nillable="true" type="tns:DropPlayerReq" />
+  <xs:complexType name="DropPlayerResp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseResp">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DropPlayerResp" nillable="true" type="tns:DropPlayerResp" />
+  <xs:complexType name="DeleteGameReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReq">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GameId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DeleteGameReq" nillable="true" type="tns:DeleteGameReq" />
+  <xs:complexType name="DeleteGameResp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseResp">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="DeleteGameResp" nillable="true" type="tns:DeleteGameResp" />
+  <xs:complexType name="GetLiveInfoReq">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseReq">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GameId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetLiveInfoReq" nillable="true" type="tns:GetLiveInfoReq" />
+  <xs:complexType name="GetLiveInfoResp">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseResp">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GameLiveInfo" nillable="true" type="tns:EnGameLiveInfo" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetLiveInfoResp" nillable="true" type="tns:GetLiveInfoResp" />
+  <xs:complexType name="EnGameLiveInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="GameState" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PlayerStates" nillable="true" type="tns:ArrayOfEnPlayerLiveInfo" />
+      <xs:element minOccurs="0" name="Turn" type="xs:int" />
+      <xs:element minOccurs="0" name="TurnStartTime" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EnGameLiveInfo" nillable="true" type="tns:EnGameLiveInfo" />
+  <xs:complexType name="ArrayOfEnPlayerLiveInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EnPlayerLiveInfo" nillable="true" type="tns:EnPlayerLiveInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEnPlayerLiveInfo" nillable="true" type="tns:ArrayOfEnPlayerLiveInfo" />
+  <xs:complexType name="EnPlayerLiveInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BonusPoints" type="xs:int" />
+      <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Condition" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CurrentDelayMsec" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OvertimeTurnMsec" type="xs:int" />
+      <xs:element minOccurs="0" name="OvertimeTurnTurn" type="xs:int" />
+      <xs:element minOccurs="0" name="PenaltyPoints" type="xs:int" />
+      <xs:element minOccurs="0" name="PenaltyThresholdReachedTurn" type="xs:int" />
+      <xs:element minOccurs="0" name="PlayerId" type="xs:int" />
+      <xs:element minOccurs="0" name="Score" type="xs:int" />
+      <xs:element minOccurs="0" name="SlowTurn" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Team" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TurnCompleted" type="xs:int" />
+      <xs:element minOccurs="0" name="TurnFinTime" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EnPlayerLiveInfo" nillable="true" type="tns:EnPlayerLiveInfo" />
+</xs:schema>

@@ -1,0 +1,245 @@
+﻿<UserControl x:Class="Game.AdminClient.Views.LobbyView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:converters="clr-namespace:Game.AdminClient.Converters"
+             xmlns:controls="clr-namespace:Game.AdminClient.Controls"
+             xmlns:viewModels="clr-namespace:Game.AdminClient.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="800" Background="#373737">
+
+    <UserControl.Resources>
+        <converters:ObjectToVisibilityConverter x:Key="ObjectToVisibilityConverter" />
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibility" />
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid  Grid.Column="0" Margin="20,20,20,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <Button Width="120" Command="{Binding CreateGameCommand.Command}" Margin="0,0,20,0" Visibility="{Binding Path=ShowCreateGame, Converter={StaticResource BooleanToVisibility}}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Foreground="White" Text="New Game" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,5,0" />
+                        <!--<controls:ProgressRing Grid.Column="1" IsActive="{Binding CreateGameCommand.IsExecuting}" IsLarge="True" />-->
+                    </Grid>
+                </Button>
+                <Button Width="120" Command="{Binding OpenGameCommand.Command}" Margin="0,0,0,0" Visibility="{Binding Path=ShowOpenGame, Converter={StaticResource BooleanToVisibility}}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Foreground="White" Grid.Column="0" Text="Open Game" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,5,0" />
+                    </Grid>
+                </Button>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Visibility="{Binding Path=ShowAutoOpen, Converter={StaticResource BooleanToVisibility}}">
+                <CheckBox x:Name="IsAutoOpenEnabled" IsChecked="{Binding IsAutoOpenEnabled, Mode=TwoWay, FallbackValue=True}" VerticalAlignment="Center" Margin="0,0,10,0" />
+                <Label Foreground="White" Target="{Binding ElementName=IsAutoOpenEnabled}" Content="_Auto open" VerticalAlignment="Center" Margin="1,0,10,0"/>
+            </StackPanel>
+            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                <CheckBox x:Name="IsAutoRefreshEnabled" IsChecked="{Binding AutoRefreshOperation.IsAutoRefreshEnabled, Mode=TwoWay, FallbackValue=True}" VerticalAlignment="Center" Margin="0,0,10,0" />
+                <Label Foreground="White" Target="{Binding ElementName=IsAutoRefreshEnabled}" Content="_Auto refresh" VerticalAlignment="Center" Margin="1,0,10,0"/>
+
+
+                <Button Width="120" Command="{Binding DeleteGameCommand.Command}" Visibility="{Binding Path=ShowDeleteGame, Converter={StaticResource BooleanToVisibility}}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Foreground="White" Grid.Column="0" Text="Delete Game" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,5,0" />
+                    </Grid>
+                </Button>
+
+            </StackPanel>
+        </Grid>
+
+
+        <Grid Grid.Row="1" Margin="20,0,20,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="310" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!--<Label Content="_Current Games:" Target="{Binding ElementName=CurrentGames}" HorizontalAlignment="Left" Margin="0,0,0,5"/>-->
+
+                <Grid Grid.Row="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition Width="30" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0" x:Name="Column1" />
+                        <Grid Grid.Column="1" x:Name="Column2" />
+                        <Grid Grid.Column="2" x:Name="Column3" />
+                    </Grid>
+
+                    <ListView Margin="0,0,0,20" x:Name="CurrentGames" BorderThickness="0" ItemsSource="{Binding GameCollection}" SelectedItem="{Binding SelectedGame}">
+                        <ListView.View>
+                            <GridView AllowsColumnReorder="False">
+                                <GridViewColumn Width="{Binding ActualWidth, ElementName=Column1}">
+                                    <GridViewColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="Game ID" Margin="20,0,5,0"
+                                                       Style="{StaticResource NormalText}" Foreground="White" />
+                                        </DataTemplate>
+                                    </GridViewColumn.HeaderTemplate>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate DataType="viewModels:GameViewModel">
+                                            <TextBlock Text="{Binding GameId}" Margin="20,0,5,0"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="{Binding ActualWidth, ElementName=Column2}">
+                                    <GridViewColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="Title" Margin="20,0,5,0"
+                                                       Style="{StaticResource NormalText}" Foreground="White" />
+                                        </DataTemplate>
+                                    </GridViewColumn.HeaderTemplate>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate DataType="viewModels:GameViewModel">
+                                            <TextBlock Text="{Binding Label}" Margin="20,0,5,0"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="{Binding ActualWidth, ElementName=Column3}">
+                                    <GridViewColumn.HeaderTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="State" Margin="20,0,5,0"
+                                                       Style="{StaticResource NormalText}" Foreground="White" />
+                                        </DataTemplate>
+                                    </GridViewColumn.HeaderTemplate>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate  DataType="viewModels:GameViewModel">
+                                            <TextBlock Text="{Binding State}" Margin="20,0,5,0"/>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem" BasedOn="{StaticResource {x:Type ListViewItem}}">
+                                <EventSetter Event="MouseDoubleClick" Handler="OnGameDoubleClick" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                </Grid>
+            </Grid>
+
+            <Grid Grid.Column="1" Visibility="{Binding SelectedGame, Converter={StaticResource ObjectToVisibilityConverter}}"  Margin="20,0,0,0" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <!--<Label Content="_Selected Game:" Target="{Binding ElementName=SelectedGame}" HorizontalAlignment="Left" Margin="0,0,0,5"/>-->
+
+                <Grid x:Name="SelectedGame" Grid.Row="1" Margin="0,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="0" />
+                            </Grid.ColumnDefinitions>
+
+                            <!--<Grid Grid.Column="0" x:Name="Column4" />-->
+                        </Grid>
+                        <StackPanel Height="200" Margin="0,0,0,0">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="34"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0" Background="#63acb3">
+                                    <Label Margin="20,0,0,0" HorizontalAlignment="Left" Foreground="White" Content="_Selected Game"></Label>
+                                </Grid>
+                                <Grid Grid.Row="1" Background="White">
+                                    <StackPanel Height="200">
+                                        <Label Target="{Binding ElementName=SelectedGameLabel}" Content="_Title" Margin="20,10,0,5" HorizontalAlignment="Left" />
+                                        <TextBox x:Name="SelectedGameLabel" Text="{Binding SelectedGame.Label, FallbackValue=Title}" IsReadOnly="True" IsReadOnlyCaretVisible="False" Margin="20,0,20,0" />
+
+                                        <Label Target="{Binding ElementName=SelectedGameState}" Content="_State" Margin="20,10,0,5" HorizontalAlignment="Left"/>
+                                        <TextBox x:Name="SelectedGameState" Text="{Binding SelectedGame.State, FallbackValue=State}" IsReadOnly="True" IsReadOnlyCaretVisible="False" Margin="20,0,20,0" />
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label  Content="_Players:" Target="{Binding ElementName=GamePlayers}" HorizontalAlignment="Left" Margin="20,10,0,5"/>
+                                            <Label VerticalAlignment="Center" Content="{Binding SelectedGame.PlayerCollection.Count, FallbackValue=0}" Margin="10,10,0,5"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                        </StackPanel>
+                    </Grid>
+
+                    <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="30" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0" x:Name="Column4" />
+                        </Grid>
+                        <ListView BorderThickness="0" x:Name="GamePlayers" Margin="0,0,0,20" ItemsSource="{Binding SelectedGame.PlayerCollection}" >
+                            <ListView.View>
+                                <GridView AllowsColumnReorder="False">
+                                    <GridViewColumn Width="{Binding ActualWidth, ElementName=Column4}">
+                                        <GridViewColumn.HeaderTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="Player Username" Margin="20,0,5,0"
+                                                       Style="{StaticResource NormalText}" Foreground="White" />
+                                            </DataTemplate>
+                                        </GridViewColumn.HeaderTemplate>
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate DataType="viewModels:PlayerViewModel">
+                                                <TextBlock Text="{Binding Name}" Margin="20,0,0,0"/>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

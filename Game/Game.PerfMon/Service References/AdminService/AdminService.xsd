@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:60044/AdminService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Game.WebService.Model" />
+  <xs:element name="InitLogin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Game.WebService.Model" minOccurs="0" name="req" nillable="true" type="q1:InitLoginReq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InitLoginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Game.WebService.Model" minOccurs="0" name="InitLoginResult" nillable="true" type="q2:InitLoginResp" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CompleteLogin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Game.WebService.Model" minOccurs="0" name="req" nillable="true" type="q3:CompleteLoginReq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CompleteLoginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Game.WebService.Model" minOccurs="0" name="CompleteLoginResult" nillable="true" type="q4:CompleteLoginResp" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListGames">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Game.WebService.Model" minOccurs="0" name="req" nillable="true" type="q5:ListGamesReq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListGamesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Game.WebService.Model" minOccurs="0" name="ListGamesResult" nillable="true" type="q6:ListGamesResp" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateGame">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Game.WebService.Model" minOccurs="0" name="req" nillable="true" type="q7:CreateGameReq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateGameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Game.WebService.Model" minOccurs="0" name="CreateGameResult" nillable="true" type="q8:CreateGameResp" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetGameDetails">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Game.WebService.Model" minOccurs="0" name="req" nillable="true" type="q9:GetGameDetailsReq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetGameDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Game.WebService.Model" minOccurs="0" name="GetGameDetailsResult" nillable="true" type="q10:GetGameDetailsResp" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListPlayers">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Game.WebService.Model" minOccurs="0" name="req" nillable="true" type="q11:ListPlayersReq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListPlayersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Game.WebService.Model" minOccurs="0" name="ListPlayersResult" nillable="true" type="q12:ListPlayersResp" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddGamePlayer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Game.WebService.Model" minOccurs="0" name="req" nillable="true" type="q13:AddGamePlayerReq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddGamePlayerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Game.WebService.Model" minOccurs="0" name="AddGamePlayerResult" nillable="true" type="q14:AddGamePlayerResp" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveGamePlayer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Game.WebService.Model" minOccurs="0" name="req" nillable="true" type="q15:RemoveGamePlayerReq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveGamePlayerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Game.WebService.Model" minOccurs="0" name="RemoveGamePlayerResult" nillable="true" type="q16:RemoveGamePlayerResp" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetGameMap">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Game.WebService.Model" minOccurs="0" name="req" nillable="true" type="q17:SetGameMapReq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SetGameMapResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Game.WebService.Model" minOccurs="0" name="SetGameMapResult" nillable="true" type="q18:SetGameMapResp" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StartGame">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Game.WebService.Model" minOccurs="0" name="req" nillable="true" type="q19:StartGameReq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StartGameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Game.WebService.Model" minOccurs="0" name="StartGameResult" nillable="true" type="q20:StartGameResp" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PauseGame">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Game.WebService.Model" minOccurs="0" name="req" nillable="true" type="q21:PauseGameReq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PauseGameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Game.WebService.Model" minOccurs="0" name="PauseGameResult" nillable="true" type="q22:PauseGameResp" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResumeGame">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/Game.WebService.Model" minOccurs="0" name="req" nillable="true" type="q23:ResumeGameReq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResumeGameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/Game.WebService.Model" minOccurs="0" name="ResumeGameResult" nillable="true" type="q24:ResumeGameResp" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateObserver">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/Game.WebService.Model" minOccurs="0" name="req" nillable="true" type="q25:CreateObserverReq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateObserverResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/Game.WebService.Model" minOccurs="0" name="CreateObserverResult" nillable="true" type="q26:CreateObserverResp" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StartObserving">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/Game.WebService.Model" minOccurs="0" name="req" nillable="true" type="q27:StartObservingReq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StartObservingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/Game.WebService.Model" minOccurs="0" name="StartObservingResult" nillable="true" type="q28:StartObservingResp" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObserveNextTurn">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/Game.WebService.Model" minOccurs="0" name="req" nillable="true" type="q29:ObserveNextTurnReq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObserveNextTurnResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/Game.WebService.Model" minOccurs="0" name="ObserveNextTurnResult" nillable="true" type="q30:ObserveNextTurnResp" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DropPlayer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/Game.WebService.Model" minOccurs="0" name="req" nillable="true" type="q31:DropPlayerReq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DropPlayerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/Game.WebService.Model" minOccurs="0" name="DropPlayerResult" nillable="true" type="q32:DropPlayerResp" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteGame">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/Game.WebService.Model" minOccurs="0" name="req" nillable="true" type="q33:DeleteGameReq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteGameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/Game.WebService.Model" minOccurs="0" name="DeleteGameResult" nillable="true" type="q34:DeleteGameResp" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLiveInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/Game.WebService.Model" minOccurs="0" name="req" nillable="true" type="q35:GetLiveInfoReq" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLiveInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/Game.WebService.Model" minOccurs="0" name="GetLiveInfoResult" nillable="true" type="q36:GetLiveInfoResp" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

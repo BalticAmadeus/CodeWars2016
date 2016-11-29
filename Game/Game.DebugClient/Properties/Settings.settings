@@ -1,0 +1,20 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)"
+              GeneratedClassNamespace="Game.DebugClient.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Username" Type="System.String" Scope="User">
+      <Value Profile="(Default)">DummyUser</Value>
+    </Setting>
+    <Setting Name="Password" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Secret123#</Value>
+    </Setting>
+    <Setting Name="TeamName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Auth</Value>
+    </Setting>
+    <Setting Name="ServerUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
+</SettingsFile>

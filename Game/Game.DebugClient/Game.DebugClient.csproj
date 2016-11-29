@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E3A9C4CF-73AC-4E81-9711-32ABB145C3D3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Game.DebugClient</RootNamespace>
+    <AssemblyName>Game.DebugClient</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Game.DebugClient.App</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Assets\Icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common">
+      <HintPath>..\packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging">
+      <HintPath>..\packages\EnterpriseLibrary.Logging.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Prism, Version=6.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Core.6.0.1\lib\net45\Prism.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Prism.Autofac.Wpf, Version=6.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Autofac.6.0.1\lib\net45\Prism.Autofac.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Prism.Wpf, Version=6.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Wpf.6.0.1\lib\net45\Prism.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Controls\PasswordHelper.cs" />
+    <Compile Include="Converters\PlayerIndexColorConverter.cs" />
+    <Compile Include="Infrastructure\CommonDataManager.cs" />
+    <Compile Include="Infrastructure\ICommonDataManager.cs" />
+    <Compile Include="Infrastructure\IMessageBoxDialogService.cs" />
+    <Compile Include="Infrastructure\ISessionIdGenerator.cs" />
+    <Compile Include="Infrastructure\ISettingsManager.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="Infrastructure\MessageBoxDialogService.cs" />
+    <Compile Include="Infrastructure\RandomSessionIdGenerator.cs" />
+    <Compile Include="Infrastructure\RelayCommand.cs" />
+    <Compile Include="Infrastructure\SettingsManager.cs">
+      <SubType>
+      </SubType>
+    </Compile>
+    <Compile Include="Module.cs" />
+    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Utilites\CompositeLogger.cs" />
+    <Compile Include="Utilites\FileLogger.cs" />
+    <Compile Include="ViewModel\CommonDataViewModel.cs" />
+    <Compile Include="ViewModel\CellViewModel.cs" />
+    <Compile Include="ViewModel\CreatePlayerViewModel.cs" />
+    <Compile Include="ViewModel\Flows\CreatePlayerFlowViewModel.cs" />
+    <Compile Include="ViewModel\Flows\PlayerModeFlowViewModel.cs" />
+    <Compile Include="ViewModel\Flows\PlayerViewModel.cs" />
+    <Compile Include="ViewModel\Flows\WaitNextTurnLoopViewModel.cs" />
+    <Compile Include="ViewModel\GetPlayerViewViewModel.cs" />
+    <Compile Include="Infrastructure\IMapService.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\LoggerViewModel.cs" />
+    <Compile Include="Infrastructure\MapService.cs" />
+    <Compile Include="Converters\CellStateConverter.cs" />
+    <Compile Include="ViewModel\PerformMoveViewModel.cs" />
+    <Compile Include="ViewModel\PlayerMoveModel.cs" />
+    <Compile Include="ViewModel\ServiceCallViewModel.cs" />
+    <Compile Include="ViewModel\WaitNextTurnViewModel.cs" />
+    <Compile Include="Views\CommonDataView.xaml.cs">
+      <DependentUpon>CommonDataView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Flows\PlayerModeFlowView.xaml.cs">
+      <DependentUpon>PlayerModeFlowView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Flows\CreatePlayerFlowView.xaml.cs">
+      <DependentUpon>CreatePlayerFlowView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Flows\WaitNextTurnLoopView.xaml.cs">
+      <DependentUpon>WaitNextTurnLoopView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PerformMoveView.xaml.cs">
+      <DependentUpon>PerformMoveView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WaitNextTurnView.xaml.cs">
+      <DependentUpon>WaitNextTurnView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GetPlayerViewView.xaml.cs">
+      <DependentUpon>GetPlayerViewView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EmptyView.xaml.cs">
+      <DependentUpon>EmptyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CreatePlayerView.xaml.cs">
+      <DependentUpon>CreatePlayerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoggerView.xaml.cs">
+      <DependentUpon>LoggerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="ShellWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ShellWindow.xaml.cs">
+      <DependentUpon>ShellWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\CommonDataView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Flows\PlayerModeFlowView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Flows\CreatePlayerFlowView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Flows\WaitNextTurnLoopView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PerformMoveView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\WaitNextTurnView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\GetPlayerViewView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\EmptyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CreatePlayerView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\LoggerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Game.ClientCommon\Game.ClientCommon.csproj">
+      <Project>{34a763da-da48-4ade-a34a-b786223fa687}</Project>
+      <Name>Game.ClientCommon</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

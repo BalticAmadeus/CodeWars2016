@@ -1,0 +1,390 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E6B3AA11-1ACF-4958-8E79-926CBD058113}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Game.AdminClient</RootNamespace>
+    <AssemblyName>Game.AdminClient</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Game.AdminClient.App</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Assets\Icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Prism, Version=6.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Core.6.0.1\lib\net45\Prism.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Prism.Autofac.Wpf, Version=6.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Autofac.6.0.1\lib\net45\Prism.Autofac.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Prism.Wpf, Version=6.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Wpf.6.0.1\lib\net45\Prism.Wpf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=2.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.5\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=2.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.5\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=2.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.5\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=2.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.5\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.DataGrid, Version=2.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.5\lib\net40\Xceed.Wpf.DataGrid.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=2.5.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.5\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Controls\ProgressRing.cs" />
+    <Compile Include="Converters\BooleanToInvertedVisibilityConverter.cs" />
+    <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Controls\PasswordHelper.cs" />
+    <Compile Include="Converters\CellStateConverter.cs" />
+    <Compile Include="Converters\NullableToStatusConverter.cs" />
+    <Compile Include="Converters\ObjectToVisibilityConverter.cs" />
+    <Compile Include="Infrastructure\UserSettings.cs" />
+    <Compile Include="Infrastructure\ConfirmationDialogService.cs" />
+    <Compile Include="Infrastructure\FileDialogService.cs" />
+    <Compile Include="Infrastructure\IConfirmationDialogService.cs" />
+    <Compile Include="Infrastructure\IMessageBoxDialogService.cs" />
+    <Compile Include="Infrastructure\MapService.cs" />
+    <Compile Include="Infrastructure\IFileDialogService.cs" />
+    <Compile Include="Infrastructure\IMapService.cs" />
+    <Compile Include="Infrastructure\ISettingsManager.cs" />
+    <Compile Include="Infrastructure\MessageBoxDialogService.cs" />
+    <Compile Include="Infrastructure\SettingsManager.cs" />
+    <Compile Include="Models\Game.cs" />
+    <Compile Include="Models\LoginData.cs" />
+    <Compile Include="Models\Match.cs" />
+    <Compile Include="Models\Observer.cs" />
+    <Compile Include="Models\Player.cs" />
+    <Compile Include="Models\PlayerState.cs" />
+    <Compile Include="Module.cs" />
+    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Service References\AdminService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\PasswordEncoder.cs" />
+    <Compile Include="ViewModels\AsyncDelegateCommandWrapper.cs" />
+    <Compile Include="ViewModels\AutoRefreshOperation.cs" />
+    <Compile Include="ViewModels\CellViewModel.cs" />
+    <Compile Include="ViewModels\GamePreviewViewModel.cs" />
+    <Compile Include="ViewModels\OpenGameViewModel.cs" />
+    <Compile Include="ViewModels\GameViewModel.cs" />
+    <Compile Include="ViewModels\LobbyViewModel.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\PlayerStateViewModel.cs" />
+    <Compile Include="ViewModels\PlayerViewModel.cs" />
+    <Compile Include="ViewModels\Sprites.cs" />
+    <Compile Include="Views\GamePreviewView.xaml.cs">
+      <DependentUpon>GamePreviewView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OpenGameView.xaml.cs">
+      <DependentUpon>OpenGameView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LobbyView.xaml.cs">
+      <DependentUpon>LobbyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ShellWindow.xaml.cs">
+      <DependentUpon>ShellWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\AdministrationServiceGateway.cs" />
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Infrastructure\IAdministrationServiceGateway.cs" />
+    <Page Include="Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\GamePreviewView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\OpenGameView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LobbyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ShellWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Map.cs" />
+    <Compile Include="Models\Move.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Service References\AdminService\AdminService.wsdl" />
+    <None Include="Service References\AdminService\AdminService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminService\AdminService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminService\AdminService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminService\AdminService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminService\AdminService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AdminService\Game.AdminClient.AdminService.AddGamePlayerResp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminService\Game.AdminClient.AdminService.CompleteLoginResp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminService\Game.AdminClient.AdminService.CreateGameResp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminService\Game.AdminClient.AdminService.CreateObserverResp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminService\Game.AdminClient.AdminService.DeleteGameResp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminService\Game.AdminClient.AdminService.DropPlayerResp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminService\Game.AdminClient.AdminService.GetGameDetailsResp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminService\Game.AdminClient.AdminService.GetLiveInfoResp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminService\Game.AdminClient.AdminService.InitLoginResp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminService\Game.AdminClient.AdminService.ListGamesResp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminService\Game.AdminClient.AdminService.ListPlayersResp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminService\Game.AdminClient.AdminService.ObserveNextTurnResp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminService\Game.AdminClient.AdminService.PauseGameResp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminService\Game.AdminClient.AdminService.RemoveGamePlayerResp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminService\Game.AdminClient.AdminService.ResumeGameResp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminService\Game.AdminClient.AdminService.SetGameMapResp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminService\Game.AdminClient.AdminService.StartGameResp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\AdminService\Game.AdminClient.AdminService.StartObservingResp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <Resource Include="Fonts\segoeui.ttf" />
+    <None Include="packages.config" />
+    <Resource Include="Fonts\OpenSans-Regular.ttf" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Fonts\LICENSE.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ba_logo.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\logo_seb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GameLogic\GameLogic.csproj">
+      <Project>{6D4EA7B4-E783-4AFE-AF1C-6047C5A99177}</Project>
+      <Name>GameLogic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\AdminService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AdminService\AdminService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AdminService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AdminService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AdminService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\logo_techcity.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
