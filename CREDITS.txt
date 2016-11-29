@@ -1,0 +1,18 @@
+﻿Tech City TecMan (C) 2016
+
+Solution is based on EnjoyTron source code by Baltic Amadeus (https://github.com/BalticAmadeus/EnjoyTron)
+and SebReversi code by AB SEB bankas (https://github.com/BalticAmadeus/SebReversi).
+
+Contributors for Tech City Lithuania:
+
+Antanas Kompanas, Baltic Amadeus
+Arūnas Kašinskas, EIS Group
+
+The following third party libraries were used in the solution:
+
+Microsoft CommonServiceLocator
+Microsoft Enterprise Library (Logging Application Block)
+Xceed Extended WPF Toolkit
+Prism
+Autofac
+Json.NET (Newtonsoft.Json)

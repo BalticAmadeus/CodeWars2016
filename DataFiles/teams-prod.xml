@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TeamList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Teams>
+    <Team Name="Auth" Secret="Secret123#" />
+    <Team Name="NoAuth" Authenticate="false" />
+    <Team Name="Admin" Secret="GangnamStyle" Role="Power"/>
+    <Team Name="Observer" Secret="Observer" Role="Observer" />
+  </Teams>
+</TeamList>
