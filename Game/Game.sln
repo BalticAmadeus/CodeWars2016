@@ -32,6 +32,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game.PerfMon", "Game.PerfMo
 		{B150ED29-96C3-4DDA-8AB1-650663287980} = {B150ED29-96C3-4DDA-8AB1-650663287980}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game.ClientHandler", "Game.ClientHandler\Game.ClientHandler.csproj", "{58EFAE00-0259-4D18-AD95-6E93AEE8ACAF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +81,10 @@ Global
 		{79BE2EFF-04F6-4E66-AFD3-4F47AF014CCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79BE2EFF-04F6-4E66-AFD3-4F47AF014CCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79BE2EFF-04F6-4E66-AFD3-4F47AF014CCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58EFAE00-0259-4D18-AD95-6E93AEE8ACAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58EFAE00-0259-4D18-AD95-6E93AEE8ACAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58EFAE00-0259-4D18-AD95-6E93AEE8ACAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58EFAE00-0259-4D18-AD95-6E93AEE8ACAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

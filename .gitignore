@@ -168,3 +168,4 @@ Game/Game.WebService/Settings
 
 **/.idea/
 **/*.iml
+Game/Game.ClientHandler/sessions

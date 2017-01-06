@@ -1,0 +1,8 @@
+﻿{
+  "serverUri": "http://localhost:60044/ClientService.svc",
+  "teamName": "Auth",
+  "teamPassword": "Secret123#",
+  "clientName": "John",
+  "clientType": "exec",
+  "execName": "bin\\Debug\\Game.ClientHandler.exe"
+}
