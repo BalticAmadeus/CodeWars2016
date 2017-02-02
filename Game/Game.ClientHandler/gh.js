@@ -11,7 +11,7 @@ var child_process = require('child_process');
 
 
 if (process.argv.length < 3 || process.argv.length > 4) {
-    console.error("USAGE: node gh.js profile.js [clientName]");
+    console.error("USAGE: node gh.js profile.json [clientName]");
     process.exit(1);
 }
 
