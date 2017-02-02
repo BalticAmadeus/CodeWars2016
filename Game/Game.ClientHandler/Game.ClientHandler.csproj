@@ -53,8 +53,8 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="sample2.json" />
-    <None Include="sample.json" />
+    <None Include="sampleExec.json" />
+    <None Include="samplePost.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="gh.js" />

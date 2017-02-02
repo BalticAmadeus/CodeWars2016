@@ -2,7 +2,7 @@
   "serverUri": "http://localhost:60044/ClientService.svc",
   "teamName": "Auth",
   "teamPassword": "Secret123#",
-  "clientName": "Peter",
-  "clientType": "exec",
-  "execName": "bin\\Debug\\Game.ClientHandler.exe"
+  "clientName": "John",
+  "clientType": "json",
+  "jsonUri": "http://localhost:60044/GameDemo.svc/json/PerformMove"
 }

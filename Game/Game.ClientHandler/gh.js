@@ -1,7 +1,7 @@
 ﻿/*
 ** Game client handler for CodeWars 2016 server
 ** USAGE: node gh.js profile.js
-** See sample.js for profile example.
+** See sample*.json for profile example.
 */
 
 var fs = require('fs');
@@ -10,8 +10,8 @@ var request = require('request');
 var child_process = require('child_process');
 
 
-if (process.argv.length != 3) {
-    console.error("USAGE: node gh.js profile.js");
+if (process.argv.length < 3 || process.argv.length > 4) {
+    console.error("USAGE: node gh.js profile.js [clientName]");
     process.exit(1);
 }
 
@@ -22,6 +22,10 @@ var server;
 var handler;
 
 readProfile();
+
+if (process.argv.length > 3)
+    profile.clientName = process.argv[3];
+
 setupSession();
 
 
@@ -45,16 +49,16 @@ function readProfile() {
     if (typeof profile.sessionDir === "undefined")
         profile.sessionDir = "sessions";
 
-    console.log("serverUri: " + profile.serverUri);
-    console.log("teamName: " + profile.teamName);
-    console.log("clientName: " + profile.clientName);
-    console.log("sessionDir: " + profile.sessionDir);
 
     if (profile.clientType == "exec") {
         if (typeof profile.execName === "undefined")
             throw "execName not specified";
         handler = execHandler;
-        console.log("clientType: exec " + profile.execName);
+    }
+    else if (profile.clientType == "json") {
+        if (typeof profile.jsonUri === "undefined")
+            throw "jsonUri not specified";
+        handler = jsonHandler;
     }
     else {
         throw "clientType not supported - " + profile.clientType;
@@ -63,14 +67,23 @@ function readProfile() {
 
 function setupSession() {
     console.log("Setting up session...");
+    console.log("serverUri: " + profile.serverUri);
+    console.log("teamName: " + profile.teamName);
+    console.log("clientName: " + profile.clientName);
+    console.log("sessionDir: " + profile.sessionDir);
+    handler(); // log
+
     var sessionId = Math.floor(Math.random() * 2147483640 + 1);
     server = new ServerSide(profile, sessionId);
     server.createPlayer(function () {
         profile.sessionLogDir = profile.sessionDir + "/" + sessionId;
-        if (!fs.existsSync(profile.sessionDir))
-            fs.mkdirSync(profile.sessionDir);
-        if (!fs.existsSync(profile.sessionLogDir))
-            fs.mkdirSync(profile.sessionLogDir);
+        if (profile.clientType == "exec") {
+            if (!fs.existsSync(profile.sessionDir))
+                fs.mkdirSync(profile.sessionDir);
+            if (!fs.existsSync(profile.sessionLogDir))
+                fs.mkdirSync(profile.sessionLogDir);
+        }
+
         turnLoop();
     });
 }
@@ -88,17 +101,44 @@ function turnLoop() {
 }
 
 function execHandler(view, next) {
+    if (typeof view === "undefined") {
+        console.log("clientType: exec " + profile.execName);
+        return;
+    }
     delete view.isOk;
     delete view.Status;
     delete view.Message;
-    var inputFile = profile.sessionLogDir + "/" + server.refTurn + "_view.json";
-    var outputFile = profile.sessionLogDir + "/" + server.refTurn + "_move.json";
+    var inputFile  = profile.sessionLogDir + "/" + view.GameUid + "_" + server.refTurn + "_in.json";
+    var outputFile = profile.sessionLogDir + "/" + view.GameUid + "_" + server.refTurn + "_out.json";
     fs.writeFileSync(inputFile, JSON.stringify(view));
     child_process.spawnSync(profile.execName, [inputFile, outputFile]);
     var data = fs.readFileSync(outputFile, "utf8");
     data = data.replace(/^\uFEFF/, ""); // strip BOM
     var move = JSON.parse(data);
     next(move);
+}
+
+function jsonHandler(view, next) {
+    if (typeof view === "undefined") {
+        console.log("clientType: json " + profile.jsonUri);
+        return;
+    }
+    delete view.isOk;
+    delete view.Status;
+    delete view.Message;
+    request({
+        url: profile.jsonUri,
+        method: "POST",
+        json: view
+    }, function (error, response, body) {
+        if (!error && response.statusCode == 200) {
+            next(body);
+        }
+        else {
+            console.log("jsonHandler: uri returned " + response.statusCode)
+            // will die here
+        }
+    });
 }
 
 function ServerSide(profile, sessionId) {
