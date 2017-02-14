@@ -10,7 +10,8 @@ namespace GameLogic
     {
         public int GameId { get; private set; }
         public Team Owner { get; private set; }
-
+        public long GameUid { get; private set; }
+        
         private GameState _state;
         private readonly List<Player> _players;
         private readonly List<ObserverQueue> _observers;
@@ -28,10 +29,11 @@ namespace GameLogic
         private DateTime _turnEnd;
         private readonly int _turnDuration;
 
-        public GameModel(int gameId, Team owner)
+        public GameModel(long uidBase, int gameId, Team owner)
         {
             GameId = gameId;
             Owner = owner;
+            GameUid = uidBase + GameId;
             State = GameState.Setup;
             _players = new List<Player>();
             _observers = new List<ObserverQueue>();
@@ -222,6 +224,8 @@ namespace GameLogic
             lock (_liveLock)
             {
                 var gv = new GameViewInfo();
+
+                gv.GameUid = GameUid;
 
                 if (playerId > 0)
                 {

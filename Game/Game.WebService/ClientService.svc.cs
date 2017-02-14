@@ -30,6 +30,7 @@ namespace Game.WebService
         private void GetPlayerViewImpl(GetPlayerViewReq req, GetPlayerViewResp resp)
         {
             GameViewInfo gv = Server.GameManager.GetPlayerView(req.PlayerId, req.Auth.GetClientCode());
+            resp.GameUid = gv.GameUid.ToString();
             resp.Turn = gv.Turn;
             resp.Mode = gv.PlayerStates[gv.PlayerIndex].Mode.ToString();
             resp.Map = new EnMapData(gv.Map);

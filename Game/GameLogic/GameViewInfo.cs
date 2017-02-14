@@ -8,6 +8,7 @@ namespace GameLogic
 {
     public class GameViewInfo
     {
+        public long GameUid;
         public int PlayerIndex;
         public GameState GameState;
         public int Turn;

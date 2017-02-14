@@ -19,6 +19,7 @@ namespace GameLogic
         private int nextGameId;
         private int nextPlayerId;
         private int nextObserverId;
+        private long uidBase;
 
         public GameManager()
         {
@@ -29,6 +30,7 @@ namespace GameLogic
             nextGameId = 1;
             nextPlayerId = 1;
             nextObserverId = 1;
+            uidBase = DateTime.UtcNow.Ticks / 10000000 * 10000000;
         }
 
         public GameInfo[] ListGames(Team team)
@@ -55,7 +57,7 @@ namespace GameLogic
                 //        throw new ApplicationException("Maximum limit of games per owner team has been reached");
                 //}
                 checkGameCreate(owner);
-                var game = new GameModel(nextGameId++, owner);
+                var game = new GameModel(uidBase, nextGameId++, owner);
                 _games[game.GameId] = game;
                 return new GameInfo(game);
             }

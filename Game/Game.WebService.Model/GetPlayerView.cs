@@ -14,6 +14,9 @@ namespace Game.WebService.Model
     public class GetPlayerViewResp : BaseResp
     {
         [DataMember]
+        public string GameUid;
+
+        [DataMember]
         public int Turn;
 
         [DataMember]
