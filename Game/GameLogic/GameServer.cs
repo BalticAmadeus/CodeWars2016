@@ -35,7 +35,6 @@ namespace GameLogic
         {
             Settings.Load();
             TeamRegistry = new TeamRegistry();
-            TeamRegistry.Load();
             SessionManager = new SessionManager(TeamRegistry);
             GameManager = new GameManager();
             if (Settings.IsProductionMode)

@@ -20,6 +20,7 @@ namespace GameLogic
         public const int ReplayDetectionWindowSeconds = 1800; // 30 min
         public const int SlowTurnIntervalSeconds = 3;
         public const int GameTurnLimit = 1000;
+        public const int RegistryReloadIntervalSeconds = 60; // 1 min
 
         private static string _gameProtocolDir = "Protocols";
         public static string GameProtocolDir { get { return _gameProtocolDir; } }
